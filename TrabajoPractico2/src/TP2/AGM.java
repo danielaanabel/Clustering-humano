@@ -11,10 +11,10 @@ public class AGM {
 	public static GrafoConPesos generarArbolMinimo(GrafoConPesos g) 
 	{	
 		GrafoConPesos agm=new GrafoConPesos(g.tamano());
-		
+
 		ArrayList<Integer> marcados=new ArrayList<Integer>();
 		marcados.add(0);//agrego el vertice inicial
-		
+
 		ArrayList<Integer> verticesG=new ArrayList<Integer>();//vertices aun no visitados
 		for(Integer j=0;j<g.tamano();j++)
 		{
@@ -22,7 +22,7 @@ public class AGM {
 		}
 		verticesG.remove(0);
 
-		int [][] aristas=new int[1][3]; 	
+		Integer [][] aristas=new Integer[1][3]; 	
 
 		int i=0;
 		while(i<g.tamano()-1){
@@ -37,9 +37,8 @@ public class AGM {
 					}
 				}		
 			}
-			Integer a=aristas[0][1];
-			marcados.add(a);
-			verticesG.remove(a);
+			marcados.add(aristas[0][1]);
+			verticesG.remove(aristas[0][1]);
 			agm.agregarAristaConPeso(aristas[0][0], aristas[0][1], aristas[0][2]);
 			i++;
 		}
