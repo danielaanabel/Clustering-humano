@@ -1,4 +1,4 @@
-package TP2;
+package TP2; 
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 
-public class BFS {
+public class BFS {  
 	
 	public static Set<Integer> alcanzables(GrafoConPesos grafo,int origen)
 	{	
@@ -27,6 +27,13 @@ public class BFS {
 			}
 		}
 		return marcados;
+	}
+	
+	public static boolean hayCiclo(GrafoConPesos grafo,int i,int j) {
+		if(alcanzables(grafo, i).contains(j))
+			return true;
+		return false;
+		
 	}
 
 }

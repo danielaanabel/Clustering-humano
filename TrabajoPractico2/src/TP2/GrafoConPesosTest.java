@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-
+  
 public class GrafoConPesosTest {
 	GrupoDePersonas listaPersonas;
 
@@ -26,9 +26,13 @@ public class GrafoConPesosTest {
 	@Test 
 	public void similaridadTest() {
 		GrafoConPesos grafo=new GrafoConPesos(3);
-		grafo.agregarAristaConPeso(0, 1, listaPersonas.getListaDePersonas());
-		grafo.agregarAristaConPeso(1, 2, listaPersonas.getListaDePersonas());
-		grafo.agregarAristaConPeso(0, 2, listaPersonas.getListaDePersonas());
+		int p1=grafo.similaridad(listaPersonas.getListaDePersonas().get(0),listaPersonas.getListaDePersonas().get(1));
+		int p2=grafo.similaridad(listaPersonas.getListaDePersonas().get(1),listaPersonas.getListaDePersonas().get(2));
+		int p3=grafo.similaridad(listaPersonas.getListaDePersonas().get(0),listaPersonas.getListaDePersonas().get(2));
+		
+		grafo.agregarAristaConPeso(0, 1, p1);
+		grafo.agregarAristaConPeso(1, 2, p2);
+		grafo.agregarAristaConPeso(0, 2, p3);
 		
 		assertEquals(grafo.obtenerPesoArista(0, 1), 4);
 		assertEquals(grafo.obtenerPesoArista(1, 2), 4);

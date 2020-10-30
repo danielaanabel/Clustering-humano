@@ -1,12 +1,14 @@
 package TP2;
-import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.Set;
 
 
 public class GrafoConPesos {
+//	private static int INFINITO=0xfff;
 	
 //	public static void main(String[] args) {
+
 //		Persona pepePersona=new Persona("pepe", 1, 2, 3, 4);
 //		Persona danie=new Persona("Dany", 2, 1, 1, 4);
 //		Persona daniel=new Persona("Daniel", 2, 5, 1, 4);
@@ -30,7 +32,7 @@ public class GrafoConPesos {
 	
 	// Representamos el grafo por su matriz de adyacencia
 	private Integer[][] A;
-
+	
 	// La cantidad de vertices esta predeterminada desde el constructor
 	public GrafoConPesos(int vertices)
 	{
@@ -39,13 +41,13 @@ public class GrafoConPesos {
 	}
 
 	// Agregado de aristas
-	public void agregarAristaConPeso(int i, int j,ArrayList<Persona> personas)
+	public void agregarAristaConPeso(int i, int j,int peso)
 	{
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
 		
-		int peso=similaridad(personas.get(i),personas.get(j));
+		//int peso=similaridad(personas.get(i),personas.get(j));
 		A[i][j] = peso;
 		A[j][i] = peso;
 	}
@@ -110,6 +112,21 @@ public class GrafoConPesos {
 
 		return ret;		
 	}
+	
+	public void imprimiGrafo() {
+		for(int f=0;f<A.length;++f){
+			for (int c = 0; c <A[0].length; c++){
+				if(A[f][c]==null)
+					System.out.print("-");
+				else 
+					System.out.print(A[f][c]);
+				System.out.print("|");
+			}
+			System.out.println();
+		}
+		
+	}
+	
 
 	// Verifica que sea un vertice valido
 	private void verificarVertice(int i)
@@ -127,6 +144,19 @@ public class GrafoConPesos {
 		if( i == j )
 			throw new IllegalArgumentException("No se permiten loops: (" + i + ", " + j + ")");
 	}
+
+	public Integer[][] getA() {
+		return A;
+	}
+
+	public void setA(Integer[][] a) {
+		A = a;
+	}
+	
+	
+	
+	
+	
 }
 
 
