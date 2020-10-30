@@ -29,8 +29,6 @@ public class AGM {
 			int minimo=0xff;
 			for(int v=0;v<marcados.size();v++){
 				for(int n=0;n<verticesG.size();n++){
-					System.out.print(marcados.get(v));
-					System.out.println(verticesG.get(n));
 					if(g.obtenerPesoArista(marcados.get(v), verticesG.get(n))<minimo) {
 						minimo=g.obtenerPesoArista(marcados.get(v), verticesG.get(n));
 						arista.setVerticeA(marcados.get(v));
