@@ -5,29 +5,6 @@ import java.util.Set;
 
 
 public class GrafoConPesos {
-//	private static int INFINITO=0xfff;
-	
-//	public static void main(String[] args) {
-
-//		Persona pepePersona=new Persona("pepe", 1, 2, 3, 4);
-//		Persona danie=new Persona("Dany", 2, 1, 1, 4);
-//		Persona daniel=new Persona("Daniel", 2, 5, 1, 4);
-//		ArrayList<Persona> personas=new ArrayList<Persona>();
-//		personas.add(pepePersona);
-//		personas.add(danie);
-//		personas.add(daniel);
-//		GrafoConPesos grafo=new GrafoConPesos(personas.size());
-//		grafo.agregarAristaConPeso(0, 1, personas);
-//		grafo.agregarAristaConPeso(1, 2, personas);
-//		grafo.agregarAristaConPeso(0, 2, personas);
-//		
-//		for(int f=0;f<grafo.A.length;++f){
-//			for (int c = 0; c <grafo.A[0].length; c++){
-//				System.out.print(grafo.A[f][c]);	
-//			}
-//			System.out.println();
-//		}
-//	}
 	
 	
 	// Representamos el grafo por su matriz de adyacencia
@@ -40,14 +17,13 @@ public class GrafoConPesos {
 		
 	}
 
-	// Agregado de aristas
 	public void agregarAristaConPeso(int i, int j,int peso)
 	{
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
 		
-		//int peso=similaridad(personas.get(i),personas.get(j));
+		//int peso=similaridad(personas.get(i),personas.get(j)); 
 		A[i][j] = peso;
 		A[j][i] = peso;
 	}
@@ -71,7 +47,6 @@ public class GrafoConPesos {
 		return iSimilaridad;
 	}
 
-	// Eliminacion de aristas
 	public void eliminarArista(int i, int j)
 	{
 		verificarVertice(i);
@@ -82,7 +57,6 @@ public class GrafoConPesos {
 		A[j][i] = null;
 	}
 
-	// Informa si existe la arista especificada
 	public boolean existeArista(int i, int j)
 	{
 		verificarVertice(i);
@@ -92,7 +66,6 @@ public class GrafoConPesos {
 		return A[i][j]!=null;
 	}
 
-	// Cantidad de vertices
 	public int tamano()
 	{
 		return A.length;
@@ -127,7 +100,7 @@ public class GrafoConPesos {
 		
 	}
 	
-
+	
 	// Verifica que sea un vertice valido
 	private void verificarVertice(int i)
 	{
@@ -151,8 +124,7 @@ public class GrafoConPesos {
 
 	public void setA(Integer[][] a) {
 		A = a;
-	}
-	
+	}	
 	
 }
 

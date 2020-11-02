@@ -13,6 +13,6 @@ public class Assert
 		assertEquals(esperado.length, obtenido.size());
 		
 		for(int i=0; i<esperado.length; ++i)
-			assertTrue( obtenido.contains(esperado[i]) );
+			assertTrue( obtenido.contains(esperado[i]));
 	}
 }

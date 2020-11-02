@@ -24,16 +24,9 @@ public class BFS {
 			{
 				if(!marcados.contains(v))
 					pendientes.add(v);
-			}
+			} 
 		}
 		return marcados;
-	}
-	
-	public static boolean hayCiclo(GrafoConPesos grafo,int i,int j) {
-		if(alcanzables(grafo, i).contains(j))
-			return true;
-		return false;
-		
 	}
 
 }
