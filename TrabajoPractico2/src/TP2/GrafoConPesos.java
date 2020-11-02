@@ -5,16 +5,16 @@ import java.util.Set;
 
 
 public class GrafoConPesos {
-	
-	
+
+
 	// Representamos el grafo por su matriz de adyacencia
 	private Integer[][] A;
-	
+
 	// La cantidad de vertices esta predeterminada desde el constructor
 	public GrafoConPesos(int vertices)
 	{
 		A = new Integer[vertices][vertices];
-		
+
 	}
 
 	public void agregarAristaConPeso(int i, int j,int peso)
@@ -22,28 +22,30 @@ public class GrafoConPesos {
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
-		
+
+		if( peso < 0 )
+			throw new IllegalArgumentException("El peso no puede ser negativo: " + peso);
 		//int peso=similaridad(personas.get(i),personas.get(j)); 
 		A[i][j] = peso;
 		A[j][i] = peso;
 	}
-	
+
 	public int obtenerPesoArista(int i, int j) {
-		
+
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
 		int ret=A[i][j];
-		
+
 		return ret;
 	}
-	
+
 	public int similaridad(Persona i, Persona j) 
 	{
-		int iSimilaridad=Math.abs(i.getiDeportes()-j.getiDeportes())+
-				Math.abs(i.getiMusica()-j.getiMusica())+
-				Math.abs(i.getiEspectaculos()-j.getiEspectaculos())+
-				Math.abs(i.getiCiencia()-j.getiCiencia());
+		int iSimilaridad=Math.abs(i.getiDeportes()-j.getiDeportes())
+				+Math.abs(i.getiMusica()-j.getiMusica())
+				+Math.abs(i.getiEspectaculos()-j.getiEspectaculos())
+				+Math.abs(i.getiCiencia()-j.getiCiencia());
 		return iSimilaridad;
 	}
 
@@ -85,7 +87,7 @@ public class GrafoConPesos {
 
 		return ret;		
 	}
-	
+
 	public void imprimiGrafo() {
 		for(int f=0;f<A.length;++f){
 			for (int c = 0; c <A[0].length; c++){
@@ -97,10 +99,10 @@ public class GrafoConPesos {
 			}
 			System.out.println();
 		}
-		
+
 	}
-	
-	
+
+
 	// Verifica que sea un vertice valido
 	private void verificarVertice(int i)
 	{
@@ -122,10 +124,7 @@ public class GrafoConPesos {
 		return A;
 	}
 
-	public void setA(Integer[][] a) {
-		A = a;
-	}	
-	
+
 }
 
 

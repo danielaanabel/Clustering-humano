@@ -2,9 +2,6 @@ package TP2;
 
 import java.util.ArrayList;
 
-
-
-
 public class AGM {
 
 	public static GrafoConPesos generarArbolMinimo(GrafoConPesos g)
@@ -39,29 +36,5 @@ public class AGM {
 		}
 		return agm;
 	}
-
-
-
-	public static void main(String[] args) {
-		GrafoConPesos grafo=new GrafoConPesos(5);
-		grafo.agregarAristaConPeso(0, 1, 9);
-		grafo.agregarAristaConPeso(0, 2, 9);
-		grafo.agregarAristaConPeso(0, 3, 9);
-		grafo.agregarAristaConPeso(0, 4, 5);
-		grafo.agregarAristaConPeso(1, 2, 0);
-		grafo.agregarAristaConPeso(1, 3, 6);
-		grafo.agregarAristaConPeso(1, 4, 8);
-		grafo.agregarAristaConPeso(2, 3, 6);
-		grafo.agregarAristaConPeso(2, 4, 8);
-		grafo.agregarAristaConPeso(3, 4, 4);
-
-
-		grafo.imprimiGrafo();
-		System.out.println();
-		AGM.generarArbolMinimo(grafo).imprimiGrafo();
-	}
-
-
-
 
 }
