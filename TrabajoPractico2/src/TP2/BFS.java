@@ -31,7 +31,6 @@ public class BFS {
 	}
 
 	public static boolean esConexo(GrafoConPesos grafo) {
-
 		if(grafo.tamano()==0) 
 			return false;
 		

@@ -28,8 +28,5 @@ public class GrupoDePersonas {
 	public void setListaDePersonas(ArrayList<Persona> listaDePersonas) {
 		this.listaDePersonas = listaDePersonas;
 	}
-	
-	
-	
 
 }

@@ -14,10 +14,12 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import TP2.GrupoDePersonas;
+
+import TP2.Ejecutar;
 import TP2.Persona;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
@@ -35,7 +37,7 @@ public class MenuInicial {
 	private JSlider ciencia;
 	private JLabel aviso;
 	private JButton ejecutar;
-	private GrupoDePersonas listaPersonas;
+	private ArrayList<Persona> listaPersonas;
 
 
 	/**
@@ -59,7 +61,7 @@ public class MenuInicial {
 	 */
 	public MenuInicial() {
 		initialize();
-		listaPersonas=new GrupoDePersonas();
+		listaPersonas=new ArrayList<Persona>();
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class MenuInicial {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 683, 481);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
+		frame.setLocation(100, 100);
 		frame.getContentPane().setLayout(null);
 
 		JLabel agregarPersona = new JLabel("Agregar Personas");
@@ -157,7 +159,8 @@ public class MenuInicial {
 					Persona p1=new Persona(nombre.getText(),
 							deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(), ciencia.getValue());
-					listaPersonas.agregarPersona(p1);
+					listaPersonas.add(p1);
+
 					modelo.addRow(nuevaFila);
 					//resetear los intereses y nombre.
 					limpiarDatos();
@@ -170,25 +173,24 @@ public class MenuInicial {
 		ejecutar = new JButton("Calcular Grupos");
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//llamar a la otra interfaz 
-				//crear un grafo con el tamano de listaDePersonas
-				//agregarle las aristas
-				//calcular prim a ese grafo
-				//mostrar por pantalla los 2 grupos formados usando bfs
-				
+		
+				ArrayList<ArrayList<String>> grupos=Ejecutar.calcularGrupos(listaPersonas);
+				visualizarGrupos verGrupos=new visualizarGrupos(grupos.get(0),grupos.get(1));
+				verGrupos.getFrame().setVisible(true);
+
 			}
 		});
 		ejecutar.setBounds(444, 376, 143, 38);
 		frame.getContentPane().add(ejecutar);
-		
+
 		modelo=new DefaultTableModel();
 		modelo.addColumn("nombre");
-		modelo.addColumn("id");
-		modelo.addColumn("im");
-		modelo.addColumn("ie");
-		modelo.addColumn("ic");
-		modelo.addRow(new String[] {"Nombre","iD","iM","iE","iC"});
-		
+		modelo.addColumn("iD");
+		modelo.addColumn("iM");
+		modelo.addColumn("iE");
+		modelo.addColumn("iC");
+		//modelo.addRow(new String[] {"Nombre","iD","iM","iE","iC"});
+
 		table = new JTable();
 		table.setBorder(null);
 		table.setRowHeight(22);
@@ -199,8 +201,8 @@ public class MenuInicial {
 		table.getColumnModel().getColumn(3).setMinWidth(35);
 		table.getColumnModel().getColumn(4).setMinWidth(35);
 		table.setBounds(400, 120, 251, 209);
-//		frame.getContentPane().add(table);
-		
+		//frame.getContentPane().add(table);
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
 		scrollPane.setBounds(400, 120, 251, 209);

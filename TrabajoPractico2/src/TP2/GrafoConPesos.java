@@ -1,5 +1,6 @@
 package TP2;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ public class GrafoConPesos {
 	{
 		verificarVertice(i);
 		verificarVertice(j);
-		verificarDistintos(i, j);
+//		verificarDistintos(i, j);
 		
 		A[i][j] = null;
 		A[j][i] = null;
@@ -104,6 +105,7 @@ public class GrafoConPesos {
 		}
 		eliminarArista(coordenadaX, coordenadaY);
 	}
+	
 
 	// Verifica que sea un vertice valido
 	private void verificarVertice(int i)
