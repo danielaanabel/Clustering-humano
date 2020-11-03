@@ -1,17 +1,29 @@
 package interfaces;
 
+
 import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import javax.swing.JSlider;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import TP2.GrupoDePersonas;
+import TP2.Persona;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
+import java.awt.SystemColor;
+
+
+
 
 
 public class MenuInicial {
@@ -25,6 +37,10 @@ public class MenuInicial {
 	private JSlider espectaculos;
 	private JSlider ciencia;
 	private JLabel aviso;
+	private JButton ejecutar;
+	private GrupoDePersonas listaPersonas;
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -46,6 +62,7 @@ public class MenuInicial {
 	 */
 	public MenuInicial() {
 		initialize();
+		listaPersonas=new GrupoDePersonas();
 	}
 
 	/**
@@ -53,7 +70,8 @@ public class MenuInicial {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 677, 442);
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 683, 481);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
@@ -63,7 +81,7 @@ public class MenuInicial {
 		frame.getContentPane().add(agregarPersona);
 
 		JLabel ingreseNombre = new JLabel("Ingrese nombre:");
-		ingreseNombre.setBounds(11, 62, 94, 22);
+		ingreseNombre.setBounds(11, 62, 98, 33);
 		frame.getContentPane().add(ingreseNombre);
 
 		aviso = new JLabel("");
@@ -71,7 +89,7 @@ public class MenuInicial {
 		frame.getContentPane().add(aviso);
 
 		nombre = new JTextField();
-		nombre.setBounds(119, 62, 141, 22);
+		nombre.setBounds(119, 62, 150, 33);
 		frame.getContentPane().add(nombre);
 		nombre.setColumns(10);
 
@@ -81,7 +99,7 @@ public class MenuInicial {
 		deportes.setValue(1);
 		deportes.setMinimum(1);
 		deportes.setMaximum(5);
-		deportes.setBounds(115, 128, 200, 33);
+		deportes.setBounds(115, 164, 200, 33);
 		frame.getContentPane().add(deportes);
 
 		musica = new JSlider();
@@ -90,7 +108,7 @@ public class MenuInicial {
 		musica.setMinimum(1);
 		musica.setMaximum(5);
 		musica.setMajorTickSpacing(1);
-		musica.setBounds(115, 172, 200, 33);
+		musica.setBounds(115, 208, 200, 33);
 		frame.getContentPane().add(musica);
 
 		espectaculos = new JSlider();
@@ -99,7 +117,7 @@ public class MenuInicial {
 		espectaculos.setMinimum(1);
 		espectaculos.setMaximum(5);
 		espectaculos.setMajorTickSpacing(1);
-		espectaculos.setBounds(115, 216, 200, 33);
+		espectaculos.setBounds(115, 252, 200, 33);
 		frame.getContentPane().add(espectaculos);
 
 		ciencia = new JSlider();
@@ -108,27 +126,27 @@ public class MenuInicial {
 		ciencia.setMinimum(1);
 		ciencia.setMaximum(5);
 		ciencia.setMajorTickSpacing(1);
-		ciencia.setBounds(115, 260, 200, 33);
+		ciencia.setBounds(115, 296, 200, 33);
 		frame.getContentPane().add(ciencia);
 
 		JLabel intereses = new JLabel("Seleccione sus intereses (siendo 1 el mas bajo y 5 es mas alto)");
-		intereses.setBounds(11, 95, 372, 22);
+		intereses.setBounds(10, 117, 362, 22);
 		frame.getContentPane().add(intereses);
 
 		JLabel etiquetaDeportes = new JLabel("Deportes");
-		etiquetaDeportes.setBounds(21, 128, 70, 22);
+		etiquetaDeportes.setBounds(21, 164, 70, 22);
 		frame.getContentPane().add(etiquetaDeportes);
 
 		JLabel etiquetaMusica = new JLabel("M\u00FAsica");
-		etiquetaMusica.setBounds(21, 172, 70, 14);
+		etiquetaMusica.setBounds(21, 208, 70, 14);
 		frame.getContentPane().add(etiquetaMusica);
 
 		JLabel etiquetaEspectaculos = new JLabel("Espect\u00E1culos");
-		etiquetaEspectaculos.setBounds(21, 216, 84, 14);
+		etiquetaEspectaculos.setBounds(21, 255, 84, 14);
 		frame.getContentPane().add(etiquetaEspectaculos);
 
 		JLabel etiquetaCiencia = new JLabel("Ciencia");
-		etiquetaCiencia.setBounds(21, 260, 84, 14);
+		etiquetaCiencia.setBounds(21, 296, 84, 14);
 		frame.getContentPane().add(etiquetaCiencia);
 
 		JButton guardarPersona = new JButton("Guardar Datos");
@@ -140,18 +158,33 @@ public class MenuInicial {
 				else {
 					Object[] nuevaFila= {nombre.getText(),deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(),ciencia.getValue()};
+					Persona p1=new Persona(nombre.getText(),
+							deportes.getValue(),musica.getValue(),
+							espectaculos.getValue(), ciencia.getValue());
+					listaPersonas.agregarPersona(p1);
 					modelo.addRow(nuevaFila);
 					//resetear los intereses y nombre.
 					limpiarDatos();
 				}
 
-
 			}});
-		guardarPersona.setBounds(129, 330, 150, 38);
+		guardarPersona.setBounds(119, 376, 150, 38);
 		frame.getContentPane().add(guardarPersona);
 
-		table = new JTable();
-		table.setRowHeight(18);
+		ejecutar = new JButton("Calcular Grupos");
+		ejecutar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//llamar a la otra interfaz 
+				//crear un grafo con el tamano de listaDePersonas
+				//agregarle las aristas
+				//calcular prim a ese grafo
+				//mostrar por pantalla los 2 grupos formados usando bfs
+				
+			}
+		});
+		ejecutar.setBounds(444, 376, 143, 38);
+		frame.getContentPane().add(ejecutar);
+		
 		modelo=new DefaultTableModel();
 		modelo.addColumn("nombre");
 		modelo.addColumn("id");
@@ -159,16 +192,25 @@ public class MenuInicial {
 		modelo.addColumn("ie");
 		modelo.addColumn("ic");
 		modelo.addRow(new String[] {"Nombre","iD","iM","iE","iC"});
-		//		modelo.addRow(new Object[] {"Daniela",1,4,3,2});
+		
+		table = new JTable();
+		table.setBorder(null);
+		table.setRowHeight(22);
 		table.setModel(modelo);
-		table.getColumnModel().getColumn(0).setPreferredWidth(70);
-		table.getColumnModel().getColumn(1).setPreferredWidth(22);
-		table.getColumnModel().getColumn(2).setPreferredWidth(22);
-		table.getColumnModel().getColumn(3).setPreferredWidth(22);
-		table.getColumnModel().getColumn(4).setPreferredWidth(22);
-		table.setBounds(378, 120, 251, 209);
-		frame.getContentPane().add(table);	
-
+		table.getColumnModel().getColumn(0).setMinWidth(90);
+		table.getColumnModel().getColumn(1).setMinWidth(35);
+		table.getColumnModel().getColumn(2).setMinWidth(35);
+		table.getColumnModel().getColumn(3).setMinWidth(35);
+		table.getColumnModel().getColumn(4).setMinWidth(35);
+		table.setBounds(400, 120, 251, 209);
+//		frame.getContentPane().add(table);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
+		scrollPane.setBounds(400, 120, 251, 209);
+		frame.getContentPane().add(scrollPane);
+		scrollPane.setViewportView(table);
+		
 
 	}
 
@@ -180,7 +222,4 @@ public class MenuInicial {
 		nombre.setText("");
 		aviso.setText("");
 	}
-
-
-
 }
