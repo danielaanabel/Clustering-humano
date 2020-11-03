@@ -3,30 +3,30 @@ package TP2;
 import java.util.ArrayList;
 
 public class GrupoDePersonas {
-	private ArrayList<Persona> listaDePersonas;
+	private ArrayList<Persona> personas;
 
 	public GrupoDePersonas() {
-		listaDePersonas =new ArrayList<Persona>();
+		personas =new ArrayList<Persona>();
 	}
 	
 	public void agregarPersona(Persona p) {
-		listaDePersonas.add(p);
+		personas.add(p);
 	} 
 	
 	public int cantPersonas() {
-		return listaDePersonas.size();
+		return personas.size();
 	}
 	
 	public Persona obtenerPersona(int p) {
-	  return listaDePersonas.get(p);
+	  return personas.get(p);
 	}
 
-	public ArrayList<Persona> getListaDePersonas() {
-		return listaDePersonas;
+	public ArrayList<Persona> getPersonas() {
+		return personas;
 	}
 
 	public void setListaDePersonas(ArrayList<Persona> listaDePersonas) {
-		this.listaDePersonas = listaDePersonas;
+		this.personas = listaDePersonas;
 	}
 
 }

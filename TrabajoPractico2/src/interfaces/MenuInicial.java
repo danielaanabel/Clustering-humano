@@ -14,8 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
 import TP2.Ejecutar;
+import TP2.GrupoDePersonas;
 import TP2.Persona;
 
 import java.awt.event.ActionListener;
@@ -36,8 +36,9 @@ public class MenuInicial {
 	private JSlider espectaculos;
 	private JSlider ciencia;
 	private JLabel aviso;
+	private JLabel avisoPersonasVacio;
 	private JButton ejecutar;
-	private ArrayList<Persona> listaPersonas;
+	private GrupoDePersonas listaPersonas;
 
 
 	/**
@@ -60,8 +61,8 @@ public class MenuInicial {
 	 * Create the application.
 	 */
 	public MenuInicial() {
+		listaPersonas=new GrupoDePersonas();
 		initialize();
-		listaPersonas=new ArrayList<Persona>();
 	}
 
 	/**
@@ -82,6 +83,10 @@ public class MenuInicial {
 		JLabel ingreseNombre = new JLabel("Ingrese nombre:");
 		ingreseNombre.setBounds(11, 62, 98, 33);
 		frame.getContentPane().add(ingreseNombre);
+
+		avisoPersonasVacio = new JLabel("");
+		avisoPersonasVacio.setBounds(432, 351, 200, 18);
+		frame.getContentPane().add(avisoPersonasVacio);
 
 		aviso = new JLabel("");
 		aviso.setBounds(289, 66, 251, 18);
@@ -156,31 +161,35 @@ public class MenuInicial {
 				else {
 					Object[] nuevaFila= {nombre.getText(),deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(),ciencia.getValue()};
+					modelo.addRow(nuevaFila);
 					Persona p1=new Persona(nombre.getText(),
 							deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(), ciencia.getValue());
-					listaPersonas.add(p1);
+					listaPersonas.agregarPersona(p1);
 
-					modelo.addRow(nuevaFila);
 					//resetear los intereses y nombre.
 					limpiarDatos();
 				}
 
 			}});
-		guardarPersona.setBounds(119, 376, 150, 38);
+		guardarPersona.setBounds(119, 392, 150, 38);
 		frame.getContentPane().add(guardarPersona);
 
 		ejecutar = new JButton("Calcular Grupos");
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-		
-				ArrayList<ArrayList<String>> grupos=Ejecutar.calcularGrupos(listaPersonas);
-				visualizarGrupos verGrupos=new visualizarGrupos(grupos.get(0),grupos.get(1));
-				verGrupos.getFrame().setVisible(true);
+				if(listaPersonas.cantPersonas()==0) 
+					avisoPersonasVacio.setText("Debe agregar personas a la lista");	
+				else {
+					ArrayList<ArrayList<String>> grupos=Ejecutar.calcularGrupos(listaPersonas);
+					//ver si se puede mejorar para que ver grupos reciba como parametro directamente grupos
+					visualizarGrupos verGrupos=new visualizarGrupos(grupos.get(0),grupos.get(1));
+					verGrupos.getFrame().setVisible(true);
+				}	
 
 			}
 		});
-		ejecutar.setBounds(444, 376, 143, 38);
+		ejecutar.setBounds(446, 392, 143, 38);
 		frame.getContentPane().add(ejecutar);
 
 		modelo=new DefaultTableModel();
@@ -208,7 +217,6 @@ public class MenuInicial {
 		scrollPane.setBounds(400, 120, 251, 209);
 		frame.getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
-
 	}
 
 	public void limpiarDatos() {
@@ -218,5 +226,6 @@ public class MenuInicial {
 		ciencia.setValue(1);
 		nombre.setText("");
 		aviso.setText("");
+		avisoPersonasVacio.setText("");
 	}
 }

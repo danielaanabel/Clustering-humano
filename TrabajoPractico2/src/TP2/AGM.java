@@ -12,7 +12,7 @@ public class AGM {
 		marcados.add(0);//agrego el vertice inicial arbitrario
 
 		boolean[] verticesG=new boolean[g.tamano()];//vertices aun no marcados
-		verticesG[marcados.get(0)]=true;
+		verticesG[0]=true;
  
 		Arista arista=new Arista();//aca voy guardando la arista minima encontrada
 
@@ -36,7 +36,6 @@ public class AGM {
 		}
 		return agm;
 	}
-	
 	
 
 }

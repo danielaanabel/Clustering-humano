@@ -7,12 +7,11 @@ import java.util.ArrayList;
 
 public class Ejecutar {
 	
-	
-	public static ArrayList<ArrayList<String>> calcularGrupos(ArrayList<Persona> listaDePersonas) {
-		GrafoConPesos grafo=construirGrafoCompleto(listaDePersonas);
+	public static ArrayList<ArrayList<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
+		GrafoConPesos grafo=construirGrafoCompleto(listaDePersonas.getPersonas());
 		grafo=AGM.generarArbolMinimo(grafo);
 		grafo.eliminarAristaMayorPeso();
-		return obtenerGrupos(grafo, listaDePersonas);
+		return obtenerGrupos(grafo,listaDePersonas.getPersonas());
 	}
 	
 	public static GrafoConPesos construirGrafoCompleto(ArrayList<Persona> listaDePersonas) {
@@ -38,7 +37,6 @@ public class Ejecutar {
 		for (int i = 0; i <l.size(); i++) {
 			if(BFS.alcanzables(g, 0).contains(i)) 
 				grupo1.add(l.get(i).getNombre());
-
 			else 
 				grupo2.add(l.get(i).getNombre());
 		}
@@ -47,8 +45,9 @@ public class Ejecutar {
 
 		return grupos;
 	}
+	
 
-
+	
 
 	public static void main(String[] args) {
 
@@ -57,24 +56,23 @@ public class Ejecutar {
 		Persona daniel=new Persona("Daniel", 2, 5, 1, 4);
 		Persona juan=new Persona("juan", 2, 5, 1, 4);
 		Persona lara=new Persona("Lara", 2, 1, 5, 4);
-		ArrayList<Persona>listaPersonas=new ArrayList<Persona>(); 
-		listaPersonas.add(pepe);
-		listaPersonas.add(jose);
-		listaPersonas.add(daniel);
-		listaPersonas.add(juan);
-		listaPersonas.add(lara);
+		GrupoDePersonas listaPersonas=new GrupoDePersonas(); 
+		listaPersonas.agregarPersona(pepe);
+		listaPersonas.agregarPersona(jose);
+		listaPersonas.agregarPersona(daniel);
+		listaPersonas.agregarPersona(juan);
+		listaPersonas.agregarPersona(lara);
 
-		GrafoConPesos g=construirGrafoCompleto(listaPersonas);
-		g=AGM.generarArbolMinimo(g);
-		g.eliminarAristaMayorPeso();
+		ArrayList<ArrayList<String>> grupos=calcularGrupos(listaPersonas);
 
-		for (String persona : obtenerGrupos(g, listaPersonas).get(0)) {
+		for (String persona : grupos.get(0)) {
 			System.out.println(persona);
-
 		}
-
-
-
+		System.out.println();
+		
+		for (String persona : grupos.get(1)) {
+			System.out.println(persona);
+		}
 
 	}
 
