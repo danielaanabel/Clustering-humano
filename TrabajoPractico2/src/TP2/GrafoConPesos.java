@@ -6,7 +6,6 @@ import java.util.Set;
 
 public class GrafoConPesos {
 
-
 	// Representamos el grafo por su matriz de adyacencia
 	private Integer[][] A;
 
@@ -135,7 +134,6 @@ public class GrafoConPesos {
 			System.out.println();
 		}
 	}
-
 
 }
 

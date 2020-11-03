@@ -13,7 +13,7 @@ public class AGM {
 
 		boolean[] verticesG=new boolean[g.tamano()];//vertices aun no marcados
 		verticesG[0]=true;
-
+ 
 		Arista arista=new Arista();//aca voy guardando la arista minima encontrada
 
 		int i=0;

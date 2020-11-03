@@ -52,8 +52,8 @@ public class GrafoConPesosTest {
 		grafo.agregarAristaConPeso(2, 3, 8);
 		grafo.agregarAristaConPeso(3, 4, 5);
 		grafo.agregarAristaConPeso(1, 2, 9);
-		grafo.agregarAristaConPeso(1, 3, 6);
-	
+		
+		
 		assertTrue(grafo.existeArista(1, 2));
 		
 		grafo.eliminarAristaMayorPeso();
