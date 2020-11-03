@@ -14,7 +14,6 @@ public class GrafoConPesos {
 	public GrafoConPesos(int vertices)
 	{
 		A = new Integer[vertices][vertices];
-
 	}
 
 	public void agregarAristaConPeso(int i, int j,int peso)
@@ -95,7 +94,6 @@ public class GrafoConPesos {
 		int maximo=0;
 		int coordenadaX = 0;
 		int coordenadaY = 0;
-
 		for(int f=0;f<A.length;++f){
 			for (int c = 0; c <A[0].length; c++){
 				if(A[f][c]!=null && A[f][c]>maximo){

@@ -3,7 +3,7 @@ package TP2;
 import java.util.ArrayList;
 
 public class AGM {
-
+ 
 	public static GrafoConPesos generarArbolMinimo(GrafoConPesos g)
 	{	
 		GrafoConPesos agm=new GrafoConPesos(g.tamano());

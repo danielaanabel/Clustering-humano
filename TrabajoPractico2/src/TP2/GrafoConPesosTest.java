@@ -17,7 +17,7 @@ public class GrafoConPesosTest {
 		Persona daniel=new Persona("Daniel", 2, 5, 1, 4);
 		Persona juan=new Persona("juan", 2, 5, 1, 4);
 		Persona lara=new Persona("Lara", 2, 2, 2, 2);
-		listaPersonas=new ArrayList<Persona>();
+		listaPersonas=new ArrayList<Persona>(); 
 		listaPersonas.add(pepe);
 		listaPersonas.add(jose);
 		listaPersonas.add(daniel);
@@ -53,6 +53,8 @@ public class GrafoConPesosTest {
 		grafo.agregarAristaConPeso(3, 4, 5);
 		grafo.agregarAristaConPeso(1, 2, 9);
 		grafo.agregarAristaConPeso(1, 3, 6);
+	
+		assertTrue(grafo.existeArista(1, 2));
 		
 		grafo.eliminarAristaMayorPeso();
 		

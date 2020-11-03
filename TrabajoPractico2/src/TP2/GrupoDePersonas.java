@@ -11,10 +11,14 @@ public class GrupoDePersonas {
 	
 	public void agregarPersona(Persona p) {
 		listaDePersonas.add(p);
-	}
+	} 
 	
 	public int cantPersonas() {
 		return listaDePersonas.size();
+	}
+	
+	public Persona obtenerPersona(int p) {
+	  return listaDePersonas.get(p);
 	}
 
 	public ArrayList<Persona> getListaDePersonas() {

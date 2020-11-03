@@ -24,7 +24,6 @@ public class AGMTest {
 	
 	@Test
 	public void arbolGeneradoMinimoTest() {
-		
 		GrafoConPesos esperado=new GrafoConPesos(5);
 		esperado.agregarAristaConPeso(0, 4, 5);
 		esperado.agregarAristaConPeso(1, 2, 0);
@@ -33,7 +32,6 @@ public class AGMTest {
 		
 		Assert.grafoIgual(AGM.generarArbolMinimo(grafo), esperado);	
 	}
-	
 	
 
 }
