@@ -9,7 +9,12 @@ public class GrupoDePersonas {
 		personas =new ArrayList<Persona>();
 	}
 	
-	public void agregarPersona(Persona p) {
+	public void agregarPersona(String name,int iD, int iM, int iE, int iC) {
+		Persona persona=new Persona(name, iD, iM, iE, iC);
+		personas.add(persona);
+	} 
+	
+	public void agregarPersona2(Persona p) {
 		personas.add(p);
 	} 
 	
@@ -28,5 +33,6 @@ public class GrupoDePersonas {
 	public void setListaDePersonas(ArrayList<Persona> listaDePersonas) {
 		this.personas = listaDePersonas;
 	}
+
 
 }

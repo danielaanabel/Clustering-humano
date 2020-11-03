@@ -57,11 +57,11 @@ public class Ejecutar {
 		Persona juan=new Persona("juan", 2, 5, 1, 4);
 		Persona lara=new Persona("Lara", 2, 1, 5, 4);
 		GrupoDePersonas listaPersonas=new GrupoDePersonas(); 
-		listaPersonas.agregarPersona(pepe);
-		listaPersonas.agregarPersona(jose);
-		listaPersonas.agregarPersona(daniel);
-		listaPersonas.agregarPersona(juan);
-		listaPersonas.agregarPersona(lara);
+		listaPersonas.agregarPersona2(pepe);
+		listaPersonas.agregarPersona2(jose);
+		listaPersonas.agregarPersona2(daniel);
+		listaPersonas.agregarPersona2(juan);
+		listaPersonas.agregarPersona2(lara);
 
 		ArrayList<ArrayList<String>> grupos=calcularGrupos(listaPersonas);
 

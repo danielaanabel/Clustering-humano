@@ -162,10 +162,10 @@ public class MenuInicial {
 					Object[] nuevaFila= {nombre.getText(),deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(),ciencia.getValue()};
 					modelo.addRow(nuevaFila);
-					Persona p1=new Persona(nombre.getText(),
+					
+					listaPersonas.agregarPersona(nombre.getText(),
 							deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(), ciencia.getValue());
-					listaPersonas.agregarPersona(p1);
 
 					//resetear los intereses y nombre.
 					limpiarDatos();
