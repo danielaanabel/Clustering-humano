@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 
-public class BFS {  
+public class BFS {   
 	
 	public static Set<Integer> alcanzables(GrafoConPesos grafo,int origen)
 	{	

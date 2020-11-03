@@ -43,6 +43,20 @@ public class GrafoConPesosTest {
 		grafo.agregarAristaConPeso(2, 3, p1);
 		
 		assertEquals(grafo.obtenerPesoArista(2, 3),0);	
+	} 
+	
+	@Test
+	public void eliminarAristaMayorTest() {
+		GrafoConPesos grafo=new GrafoConPesos(5);
+		grafo.agregarAristaConPeso(0, 1, 0);
+		grafo.agregarAristaConPeso(2, 3, 8);
+		grafo.agregarAristaConPeso(3, 4, 5);
+		grafo.agregarAristaConPeso(1, 2, 9);
+		grafo.agregarAristaConPeso(1, 3, 6);
+		
+		grafo.eliminarAristaMayorPeso();
+		
+		assertFalse(grafo.existeArista(1, 2));
 	}
 
 }

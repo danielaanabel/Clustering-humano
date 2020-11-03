@@ -27,7 +27,7 @@ public class GrafoConPesos {
 			throw new IllegalArgumentException("El peso no puede ser negativo: " + peso);
 		//int peso=similaridad(personas.get(i),personas.get(j)); 
 		A[i][j] = peso;
-		A[j][i] = peso;
+		A[j][i] = peso; 
 	}
 
 	public int obtenerPesoArista(int i, int j) {
@@ -35,18 +35,11 @@ public class GrafoConPesos {
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
-		int ret=A[i][j];
 
-		return ret;
-	}
-
-	public int similaridad(Persona i, Persona j) 
-	{
-		int iSimilaridad=Math.abs(i.getiDeportes()-j.getiDeportes())
-				+Math.abs(i.getiMusica()-j.getiMusica())
-				+Math.abs(i.getiEspectaculos()-j.getiEspectaculos())
-				+Math.abs(i.getiCiencia()-j.getiCiencia());
-		return iSimilaridad;
+		if(A[i][j]!=null) {
+			return A[i][j];
+		}
+		return 0xff;
 	}
 
 	public void eliminarArista(int i, int j)
@@ -54,7 +47,7 @@ public class GrafoConPesos {
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
-
+		
 		A[i][j] = null;
 		A[j][i] = null;
 	}
@@ -88,20 +81,32 @@ public class GrafoConPesos {
 		return ret;		
 	}
 
-	public void imprimiGrafo() {
-		for(int f=0;f<A.length;++f){
-			for (int c = 0; c <A[0].length; c++){
-				if(A[f][c]==null)
-					System.out.print("-");
-				else 
-					System.out.print(A[f][c]);
-				System.out.print("|");
-			}
-			System.out.println();
-		}
-
+	public int similaridad(Persona i, Persona j) 
+	{
+		int iSimilaridad=Math.abs(i.getiDeportes()-j.getiDeportes())
+				+Math.abs(i.getiMusica()-j.getiMusica())
+				+Math.abs(i.getiEspectaculos()-j.getiEspectaculos())
+				+Math.abs(i.getiCiencia()-j.getiCiencia());
+		return iSimilaridad;
 	}
 
+	public void eliminarAristaMayorPeso() 
+	{
+		int maximo=0;
+		int coordenadaX = 0;
+		int coordenadaY = 0;
+
+		for(int f=0;f<A.length;++f){
+			for (int c = 0; c <A[0].length; c++){
+				if(A[f][c]!=null && A[f][c]>maximo){
+					maximo=A[f][c];
+					coordenadaX=f;
+					coordenadaY=c;
+				}
+			}
+		}
+		eliminarArista(coordenadaX, coordenadaY);
+	}
 
 	// Verifica que sea un vertice valido
 	private void verificarVertice(int i)
@@ -120,8 +125,17 @@ public class GrafoConPesos {
 			throw new IllegalArgumentException("No se permiten loops: (" + i + ", " + j + ")");
 	}
 
-	public Integer[][] getA() {
-		return A;
+	public void imprimiGrafo() {
+		for(int f=0;f<A.length;++f){
+			for (int c = 0; c <A[0].length; c++){
+				if(A[f][c]==null)
+					System.out.print("-");
+				else 
+					System.out.print(A[f][c]);
+				System.out.print("|");
+			}
+			System.out.println();
+		}
 	}
 
 

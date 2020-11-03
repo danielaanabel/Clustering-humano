@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class EdicionDeAristasTest
-{
+{ 
 	@Test(expected = IllegalArgumentException.class)
 	public void primerVerticeNegativoTest()
 	{
@@ -43,10 +43,10 @@ public class EdicionDeAristasTest
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void pesoNegativoTest()
+	public void agregarPesoNegativoTest()
 	{
 		GrafoConPesos grafo = new GrafoConPesos(5);
-		grafo.agregarAristaConPeso(2, 4, -5);
+		grafo.agregarAristaConPeso(2, 4, -1);
 	}
 
 	@Test

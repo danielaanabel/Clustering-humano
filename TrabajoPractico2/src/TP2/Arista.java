@@ -3,7 +3,7 @@ package TP2;
 public class Arista {
 	private int verticeA;
 	private int verticeB;
-	private int peso;
+	private int peso; 
 	
 	public int getVerticeA() {
 		return verticeA;

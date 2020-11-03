@@ -4,7 +4,7 @@ import org.junit.Test;
 
 
 public class BFSTest {
-
+ 
 	@Test
 	public void alcanzablesDosComponentesTest() {
 		GrafoConPesos grafo=new GrafoConPesos(5);
