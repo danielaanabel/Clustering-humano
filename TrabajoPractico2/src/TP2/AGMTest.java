@@ -30,7 +30,7 @@ public class AGMTest {
 		esperado.agregarAristaConPeso(1, 3, 6);
 		esperado.agregarAristaConPeso(3, 4, 4);
 		
-		Assert.grafoIgual(AGM.generarArbolMinimo(grafo), esperado);	
+		Assert.grafoIgual(AGM.algoritmoPrim(grafo), esperado);	
 	}
 	
 

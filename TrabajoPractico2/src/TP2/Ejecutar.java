@@ -9,7 +9,7 @@ public class Ejecutar {
 	
 	public static ArrayList<ArrayList<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
 		GrafoConPesos grafo=construirGrafoCompleto(listaDePersonas.getPersonas());
-		grafo=AGM.generarArbolMinimo(grafo);
+		grafo=AGM.algoritmoPrim(grafo);
 		grafo.eliminarAristaMayorPeso();
 		return obtenerGrupos(grafo,listaDePersonas.getPersonas());
 	}

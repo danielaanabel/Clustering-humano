@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AGM {
  
-	public static GrafoConPesos generarArbolMinimo(GrafoConPesos g)
+	public static GrafoConPesos algoritmoPrim(GrafoConPesos g)
 	{	
 		GrafoConPesos agm=new GrafoConPesos(g.tamano());
 
