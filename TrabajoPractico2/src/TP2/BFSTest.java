@@ -1,5 +1,8 @@
 package TP2;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 
@@ -45,6 +48,22 @@ public class BFSTest {
 		int[] esperado= {0,1,2,3};
 		Assert.iguales(esperado,BFS.alcanzables(grafo, 3));
 	}
-
+	
+	@Test 
+	public void esConexoTest() {
+		GrafoConPesos grafo=new GrafoConPesos(4);
+		grafo.agregarAristaConPeso(0, 2, 1);
+		grafo.agregarAristaConPeso(1, 2, 1);
+		grafo.agregarAristaConPeso(1, 3, 1);
+		
+		assertTrue(BFS.esConexo(grafo));
+	}
+	
+	@Test 
+	public void grafoVacioTest() {
+		GrafoConPesos grafo=new GrafoConPesos(0);
+		
+		assertFalse(BFS.esConexo(grafo));
+	}
 
 }

@@ -59,6 +59,13 @@ public class GrafoConPesosTest {
 		assertFalse(grafo.existeArista(1, 2));
 	}
 	
+	@Test
+	public void grafoCompletoTest() {
+		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaPersonas);
+		Assert.GrafoCompleto(grafo);		
+	}
+	
+	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void verticeNegativoTest() {

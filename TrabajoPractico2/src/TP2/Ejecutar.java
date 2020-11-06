@@ -8,25 +8,10 @@ import java.util.ArrayList;
 public class Ejecutar {
 	
 	public static ArrayList<ArrayList<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
-		GrafoConPesos grafo=construirGrafoCompleto(listaDePersonas.getPersonas());
+		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaDePersonas.getPersonas());
 		grafo=AGM.algoritmoPrim(grafo);
 		grafo.eliminarAristaMayorPeso();
 		return obtenerGrupos(grafo,listaDePersonas.getPersonas());
-	}
-	
-	public static GrafoConPesos construirGrafoCompleto(ArrayList<Persona> listaDePersonas) {
-		GrafoConPesos grafo=new GrafoConPesos(listaDePersonas.size());
-
-		//agrego aristas para formar grafo completo
-		for(int i=0;i<grafo.tamano();i++) {
-			for(int j=0;j<grafo.tamano();j++) {
-				if(i!=j) {
-					int peso=grafo.similaridad(listaDePersonas.get(i), listaDePersonas.get(j));
-					grafo.agregarAristaConPeso(i, j, peso);
-				}
-			}
-		}
-		return grafo;
 	}
 
 	public static ArrayList<ArrayList<String>> obtenerGrupos(GrafoConPesos g,ArrayList<Persona> l) {
@@ -42,7 +27,6 @@ public class Ejecutar {
 		}
 		grupos.add(grupo1);
 		grupos.add(grupo2);
-
 		return grupos;
 	}
 

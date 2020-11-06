@@ -1,39 +1,74 @@
 {
   "personas": [
     {
-      "nombre": "pepe",
+      "nombre": "Lucia",
+      "iDeportes": 2,
+      "iMusica": 5,
+      "iEspectaculos": 2,
+      "iCiencia": 3
+    },
+    {
+      "nombre": "Valentina",
+      "iDeportes": 5,
+      "iMusica": 3,
+      "iEspectaculos": 2,
+      "iCiencia": 3
+    },
+    {
+      "nombre": "Daniel",
+      "iDeportes": 1,
+      "iMusica": 5,
+      "iEspectaculos": 3,
+      "iCiencia": 3
+    },
+    {
+      "nombre": "Fabian",
+      "iDeportes": 2,
+      "iMusica": 5,
+      "iEspectaculos": 2,
+      "iCiencia": 5
+    },
+    {
+      "nombre": "Adrian",
       "iDeportes": 1,
       "iMusica": 5,
       "iEspectaculos": 3,
       "iCiencia": 4
     },
     {
-      "nombre": "jose",
+      "nombre": "Federico",
       "iDeportes": 2,
       "iMusica": 1,
       "iEspectaculos": 3,
       "iCiencia": 4
     },
     {
-      "nombre": "daniel",
+      "nombre": "Alicia",
       "iDeportes": 2,
       "iMusica": 5,
       "iEspectaculos": 1,
-      "iCiencia": 4
+      "iCiencia": 2
     },
     {
-      "nombre": "juan",
-      "iDeportes": 2,
-      "iMusica": 5,
-      "iEspectaculos": 1,
-      "iCiencia": 4
-    },
-    {
-      "nombre": "lara",
-      "iDeportes": 2,
+      "nombre": "Johana",
+      "iDeportes": 4,
       "iMusica": 1,
       "iEspectaculos": 5,
-      "iCiencia": 4
+      "iCiencia": 2
+    },
+    {
+      "nombre": "Sabrina",
+      "iDeportes": 3,
+      "iMusica": 1,
+      "iEspectaculos": 4,
+      "iCiencia": 5
+    },
+    {
+      "nombre": "Matheo",
+      "iDeportes": 1,
+      "iMusica": 5,
+      "iEspectaculos": 1,
+      "iCiencia": 5
     }
   ]
 }

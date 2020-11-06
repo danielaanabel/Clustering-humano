@@ -27,4 +27,13 @@ public class Assert
 		}		
 	}
 	
+	public static void GrafoCompleto(GrafoConPesos g) {
+		for(int i=0;i<g.tamano();i++) {
+			for(int j=0;j<g.tamano();j++) if(i!=j) {
+				assertTrue(g.existeArista(i, j));
+			}
+		}		
+	}
+	
+	
 }

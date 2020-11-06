@@ -1,6 +1,7 @@
 package TP2;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ public class GrafoConPesos {
 	}
 
 	public void agregarAristaConPeso(int i, int j,int peso) {
+		
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
@@ -40,6 +42,7 @@ public class GrafoConPesos {
 	}
 
 	public void eliminarArista(int i, int j) {
+		
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
@@ -75,11 +78,10 @@ public class GrafoConPesos {
 	}
 
 	public int similaridad(Persona i, Persona j) {
-		int iSimilaridad=Math.abs(i.getiDeportes()-j.getiDeportes())
+		return 	Math.abs(i.getiDeportes()-j.getiDeportes())
 				+Math.abs(i.getiMusica()-j.getiMusica())
 				+Math.abs(i.getiEspectaculos()-j.getiEspectaculos())
 				+Math.abs(i.getiCiencia()-j.getiCiencia());
-		return iSimilaridad;
 	}
 
 	public void eliminarAristaMayorPeso() {
@@ -95,7 +97,20 @@ public class GrafoConPesos {
 				}
 			}
 		}
-		eliminarArista(coordenadaX, coordenadaY);
+		if(coordenadaX!=coordenadaY)
+			eliminarArista(coordenadaX, coordenadaY);
+	}
+	
+	public static GrafoConPesos construirGrafoCompleto(ArrayList<Persona> listaDePersonas) {
+		GrafoConPesos grafo=new GrafoConPesos(listaDePersonas.size());
+
+		for(int i=0;i<grafo.tamano();i++) {
+			for(int j=0;j<grafo.tamano();j++) if(i!=j) {
+					int peso=grafo.similaridad(listaDePersonas.get(i), listaDePersonas.get(j));
+					grafo.agregarAristaConPeso(i, j, peso);
+				}
+		}
+		return grafo;
 	}
 	
 
