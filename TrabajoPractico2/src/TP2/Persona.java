@@ -17,13 +17,14 @@ public class Persona {
 		setiEspectaculos(iE);
 		setiCiencia(iC);
 	}
-	
-	//agregar IREP para que solo reciban valores entre 1 y 5
+
 	public int getiDeportes() {
 		return iDeportes;
 	}
 
 	public void setiDeportes(int iDeportes) {
+		if(iDeportes<1 || iDeportes>5)
+			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
 		this.iDeportes = iDeportes;
 	}
 
@@ -32,6 +33,8 @@ public class Persona {
 	}
 
 	public void setiMusica(int iMusica) {
+		if(iMusica<1 || iMusica>5)
+			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
 		this.iMusica = iMusica;
 	}
 
@@ -40,6 +43,8 @@ public class Persona {
 	}
 
 	public void setiEspectaculos(int iEspectaculos) {
+		if(iEspectaculos<1 || iEspectaculos>5)
+			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
 		this.iEspectaculos = iEspectaculos;
 	}
 
@@ -48,15 +53,18 @@ public class Persona {
 	}
 
 	public void setiCiencia(int iCiencia) {
+		if(iCiencia<1 || iCiencia>5)
+			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
 		this.iCiencia = iCiencia;
 	}
 
-	//Hacer el IREP de la longitud del nombre
 	public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
+		if(nombre.length()<3 || nombre.length()>12)
+			throw new RuntimeException("¡Debe ingresar nombres entre 2 y 12 letras!");
 		this.nombre = nombre;
 	}
 	

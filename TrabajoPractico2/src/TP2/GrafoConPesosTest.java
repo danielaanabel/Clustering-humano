@@ -48,6 +48,7 @@ public class GrafoConPesosTest {
 	
 	@Test
 	public void eliminarAristaMayorTest() {
+		
 		GrafoConPesos grafo=new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(0, 1, 0);
 		grafo.agregarAristaConPeso(2, 3, 8);
@@ -61,7 +62,9 @@ public class GrafoConPesosTest {
 	
 	@Test
 	public void grafoCompletoTest() {
+		
 		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaPersonas);
+		
 		Assert.GrafoCompleto(grafo);		
 	}
 	

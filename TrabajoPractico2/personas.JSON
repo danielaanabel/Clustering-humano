@@ -8,13 +8,6 @@
       "iCiencia": 3
     },
     {
-      "nombre": "Valentina",
-      "iDeportes": 5,
-      "iMusica": 3,
-      "iEspectaculos": 2,
-      "iCiencia": 3
-    },
-    {
       "nombre": "Daniel",
       "iDeportes": 1,
       "iMusica": 5,
@@ -34,6 +27,13 @@
       "iMusica": 5,
       "iEspectaculos": 3,
       "iCiencia": 4
+    },
+    {
+      "nombre": "Valentina",
+      "iDeportes": 3,
+      "iMusica": 3,
+      "iEspectaculos": 2,
+      "iCiencia": 3
     },
     {
       "nombre": "Federico",

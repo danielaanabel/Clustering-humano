@@ -222,6 +222,7 @@ public class MenuInicial {
 					int im=listaPersonas.getPersonas().get(i).getiMusica();
 					int ie=listaPersonas.getPersonas().get(i).getiEspectaculos();
 					int ic=listaPersonas.getPersonas().get(i).getiCiencia();
+					
 					modelo.addRow(new Object[] {nombre,id,im,ie,ic});
 				}
 			}
