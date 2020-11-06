@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class EdicionDeAristasTest
-{ 
+public class EdicionDeAristasTest { 
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void primerVerticeNegativoTest()
 	{

@@ -9,8 +9,7 @@ import java.util.Set;
 
 public class BFS {   
 
-	public static Set<Integer> alcanzables(GrafoConPesos grafo,int origen)
-	{	
+	public static Set<Integer> alcanzables(GrafoConPesos grafo,int origen) {	
 		Set<Integer> marcados= new HashSet<Integer>();
 		ArrayList<Integer> pendientes= new ArrayList<Integer>();
 		pendientes.add(origen);

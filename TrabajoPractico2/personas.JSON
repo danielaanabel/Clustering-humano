@@ -1,0 +1,39 @@
+{
+  "personas": [
+    {
+      "nombre": "pepe",
+      "iDeportes": 1,
+      "iMusica": 5,
+      "iEspectaculos": 3,
+      "iCiencia": 4
+    },
+    {
+      "nombre": "jose",
+      "iDeportes": 2,
+      "iMusica": 1,
+      "iEspectaculos": 3,
+      "iCiencia": 4
+    },
+    {
+      "nombre": "daniel",
+      "iDeportes": 2,
+      "iMusica": 5,
+      "iEspectaculos": 1,
+      "iCiencia": 4
+    },
+    {
+      "nombre": "juan",
+      "iDeportes": 2,
+      "iMusica": 5,
+      "iEspectaculos": 1,
+      "iCiencia": 4
+    },
+    {
+      "nombre": "lara",
+      "iDeportes": 2,
+      "iMusica": 1,
+      "iEspectaculos": 5,
+      "iCiencia": 4
+    }
+  ]
+}

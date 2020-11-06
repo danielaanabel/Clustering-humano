@@ -8,16 +8,16 @@ import java.util.Set;
 public class Assert
 {
 	// Verifica que sean iguales como conjuntos
-	public static void iguales(int[] esperado, Set<Integer> obtenido)
-	{
+	public static void iguales(int[] esperado, Set<Integer> obtenido) {
+		
 		assertEquals(esperado.length, obtenido.size());
 
 		for(int i=0; i<esperado.length; ++i)
 			assertTrue( obtenido.contains(esperado[i]));
 	}
-
-	public static void grafoIgual(GrafoConPesos g1,GrafoConPesos g2)
-	{
+	
+	public static void grafoIgual(GrafoConPesos g1,GrafoConPesos g2) {
+		
 		assertEquals(g1.tamano(), g2.tamano());
 
 		for(int f=0;f<g1.tamano();f++) {

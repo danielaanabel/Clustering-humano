@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-
 import javax.swing.JSlider;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -16,10 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 import TP2.Ejecutar;
 import TP2.GrupoDePersonas;
-import TP2.Persona;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
@@ -39,6 +36,7 @@ public class MenuInicial {
 	private JLabel avisoPersonasVacio;
 	private JButton ejecutar;
 	private GrupoDePersonas listaPersonas;
+	private JButton btnNewButton;
 
 
 	/**
@@ -73,7 +71,6 @@ public class MenuInicial {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 683, 481);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocation(100, 100);
 		frame.getContentPane().setLayout(null);
 
 		JLabel agregarPersona = new JLabel("Agregar Personas");
@@ -152,6 +149,31 @@ public class MenuInicial {
 		JLabel etiquetaCiencia = new JLabel("Ciencia");
 		etiquetaCiencia.setBounds(21, 296, 84, 14);
 		frame.getContentPane().add(etiquetaCiencia);
+		
+		modelo=new DefaultTableModel();
+		modelo.addColumn("nombre");
+		modelo.addColumn("iD");
+		modelo.addColumn("iM");
+		modelo.addColumn("iE");
+		modelo.addColumn("iC");
+		
+		table = new JTable();
+		table.setBorder(null);
+		table.setRowHeight(22);
+		table.setModel(modelo);
+		table.getColumnModel().getColumn(0).setMinWidth(90);
+		table.getColumnModel().getColumn(1).setMinWidth(35);
+		table.getColumnModel().getColumn(2).setMinWidth(35);
+		table.getColumnModel().getColumn(3).setMinWidth(35);
+		table.getColumnModel().getColumn(4).setMinWidth(35);
+		table.setBounds(400, 120, 251, 209);
+		//frame.getContentPane().add(table);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
+		scrollPane.setBounds(400, 120, 251, 209);
+		frame.getContentPane().add(scrollPane);
+		scrollPane.setViewportView(table);
 
 		JButton guardarPersona = new JButton("Guardar Datos");
 		guardarPersona.addActionListener(new ActionListener() {
@@ -181,9 +203,7 @@ public class MenuInicial {
 				if(listaPersonas.cantPersonas()==0) 
 					avisoPersonasVacio.setText("Debe agregar personas a la lista");	
 				else {
-					ArrayList<ArrayList<String>> grupos=Ejecutar.calcularGrupos(listaPersonas);
-					//ver si se puede mejorar para que ver grupos reciba como parametro directamente grupos
-					visualizarGrupos verGrupos=new visualizarGrupos(grupos.get(0),grupos.get(1));
+					visualizarGrupos verGrupos=new visualizarGrupos(Ejecutar.calcularGrupos(listaPersonas));
 					verGrupos.getFrame().setVisible(true);
 				}	
 
@@ -192,31 +212,25 @@ public class MenuInicial {
 		ejecutar.setBounds(446, 392, 143, 38);
 		frame.getContentPane().add(ejecutar);
 
-		modelo=new DefaultTableModel();
-		modelo.addColumn("nombre");
-		modelo.addColumn("iD");
-		modelo.addColumn("iM");
-		modelo.addColumn("iE");
-		modelo.addColumn("iC");
-		//modelo.addRow(new String[] {"Nombre","iD","iM","iE","iC"});
 
-		table = new JTable();
-		table.setBorder(null);
-		table.setRowHeight(22);
-		table.setModel(modelo);
-		table.getColumnModel().getColumn(0).setMinWidth(90);
-		table.getColumnModel().getColumn(1).setMinWidth(35);
-		table.getColumnModel().getColumn(2).setMinWidth(35);
-		table.getColumnModel().getColumn(3).setMinWidth(35);
-		table.getColumnModel().getColumn(4).setMinWidth(35);
-		table.setBounds(400, 120, 251, 209);
-		//frame.getContentPane().add(table);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
-		scrollPane.setBounds(400, 120, 251, 209);
-		frame.getContentPane().add(scrollPane);
-		scrollPane.setViewportView(table);
+		
+		btnNewButton = new JButton("Cargar lista pre-cargada");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				listaPersonas=GrupoDePersonas.leerJSON("personas.JSON");
+				for (int i = 0; i < listaPersonas.cantPersonas(); i++) {
+					String nombre=listaPersonas.getPersonas().get(i).getNombre();
+					int id=listaPersonas.getPersonas().get(i).getiDeportes();
+					int im=listaPersonas.getPersonas().get(i).getiMusica();
+					int ie=listaPersonas.getPersonas().get(i).getiEspectaculos();
+					int ic=listaPersonas.getPersonas().get(i).getiCiencia();
+					modelo.addRow(new Object[] {nombre,id,im,ie,ic});
+				}
+			}
+		});
+		btnNewButton.setBounds(32, 351, 258, 23);
+		frame.getContentPane().add(btnNewButton);
 	}
 
 	public void limpiarDatos() {

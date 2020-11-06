@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+
   
 public class GrafoConPesosTest {
 	private ArrayList<Persona> listaPersonas;
@@ -54,9 +55,49 @@ public class GrafoConPesosTest {
 		grafo.agregarAristaConPeso(1, 2, 9);
 		
 		assertTrue(grafo.existeArista(1, 2));
-		grafo.eliminarAristaMayorPeso();
-		
+		grafo.eliminarAristaMayorPeso();	
 		assertFalse(grafo.existeArista(1, 2));
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void verticeNegativoTest() {
+		GrafoConPesos grafo = new GrafoConPesos(5);
+		grafo.vecinos(-1);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void verticeExcedidoTest() {
+		GrafoConPesos grafo = new GrafoConPesos(5);
+		grafo.vecinos(5);
+	}
+
+	@Test
+	public void todosAisladosTest() {
+		GrafoConPesos grafo = new GrafoConPesos(5);
+		assertEquals(0, grafo.vecinos(2).size());
+	}
+	
+	@Test
+	public void verticeUniversalTest() {
+		GrafoConPesos grafo = new GrafoConPesos(4);
+		grafo.agregarAristaConPeso(1, 0, 5);
+		grafo.agregarAristaConPeso(1, 2, 5);
+		grafo.agregarAristaConPeso(1, 3, 5);
+		
+		int[] esperado = {0, 2, 3};
+		Assert.iguales(esperado, grafo.vecinos(1));
+	}
+	
+	@Test
+	public void verticeNormalTest() {
+		GrafoConPesos grafo = new GrafoConPesos(5);
+		grafo.agregarAristaConPeso(1, 3, 7);
+		grafo.agregarAristaConPeso(2, 3, 8);
+		grafo.agregarAristaConPeso(2, 4, 6);
+		
+		int[] esperados = {1, 2};
+		Assert.iguales(esperados, grafo.vecinos(3));
 	}
 
 }

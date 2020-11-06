@@ -45,35 +45,5 @@ public class Ejecutar {
 
 		return grupos;
 	}
-	
-
-	
-
-	public static void main(String[] args) {
-
-		Persona pepe=new Persona("Pepe", 1, 5, 3, 4);
-		Persona jose=new Persona("Jose", 2, 1, 3, 4);
-		Persona daniel=new Persona("Daniel", 2, 5, 1, 4);
-		Persona juan=new Persona("juan", 2, 5, 1, 4);
-		Persona lara=new Persona("Lara", 2, 1, 5, 4);
-		GrupoDePersonas listaPersonas=new GrupoDePersonas(); 
-		listaPersonas.agregarPersona2(pepe);
-		listaPersonas.agregarPersona2(jose);
-		listaPersonas.agregarPersona2(daniel);
-		listaPersonas.agregarPersona2(juan);
-		listaPersonas.agregarPersona2(lara);
-
-		ArrayList<ArrayList<String>> grupos=calcularGrupos(listaPersonas);
-
-		for (String persona : grupos.get(0)) {
-			System.out.println(persona);
-		}
-		System.out.println();
-		
-		for (String persona : grupos.get(1)) {
-			System.out.println(persona);
-		}
-
-	}
 
 }

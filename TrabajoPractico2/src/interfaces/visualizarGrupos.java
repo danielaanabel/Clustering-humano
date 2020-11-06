@@ -1,23 +1,32 @@
 package interfaces;
 
 
+import java.awt.SystemColor;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class visualizarGrupos {
 
 	private JFrame frame;
-	private ArrayList<String> g1;
-	private ArrayList<String> g2;
+	private ArrayList<ArrayList<String>> grupos;
+	private JTable tabla1;
+	private JTable tabla2;
+	private DefaultTableModel modelo1;
+	private DefaultTableModel modelo2;
 
 
 	/**
 	 * Create the application.
 	 */
-	public visualizarGrupos(ArrayList<String> grupo1, ArrayList<String> grupo2) {
-		g1=grupo1;
-		g2=grupo2;
+	public visualizarGrupos(ArrayList<ArrayList<String>> g) {
+		grupos=g;
 		initialize();
 	}
 
@@ -25,27 +34,65 @@ public class visualizarGrupos {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(770, 100, 400, 481);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		modelo1=new DefaultTableModel();
+		modelo1.addColumn("Nombre");
+		
+		modelo2=new DefaultTableModel();
+		modelo2.addColumn("Nombre");
 		
 		
+		tabla1 = new JTable();
+		tabla1.setBounds(43, 64, 137, 299);
+		tabla1.setModel(modelo1);
 		
-		for (String e: g1) {
-			System.out.println(e);
+		tabla2 = new JTable();
+		tabla2.setBounds(218, 64, 137, 299);
+		tabla2.setModel(modelo2);
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
+		scrollPane.setBounds(39, 64, 143, 299);
+		frame.getContentPane().add(scrollPane);
+		scrollPane.setViewportView(tabla1);
+		
+		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane2.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
+		scrollPane2.setBounds(212, 64, 143, 299);
+		frame.getContentPane().add(scrollPane2);
+		scrollPane2.setViewportView(tabla2);
+		
+		JLabel etiquetaGrupo1 = new JLabel("Grupo 1");
+		etiquetaGrupo1.setHorizontalAlignment(SwingConstants.CENTER);
+		etiquetaGrupo1.setBounds(79, 27, 57, 26);
+		frame.getContentPane().add(etiquetaGrupo1);
+		
+		JLabel etiquetaGrupo2 = new JLabel("Grupo 2");
+		etiquetaGrupo2.setHorizontalAlignment(SwingConstants.CENTER);
+		etiquetaGrupo2.setBounds(251, 27, 57, 26);
+		frame.getContentPane().add(etiquetaGrupo2);
+		
+		for(int i=0;i<grupos.size();i++) {
+			for(int j=0;j<grupos.get(i).size();j++) {
+				if(i==0)
+					modelo1.addRow(new Object[] {grupos.get(i).get(j)});
+				else
+					modelo2.addRow(new Object[] {grupos.get(i).get(j)});
+			}
+			
 		}
-		System.out.println();
-		for (String f: g2) {
-			System.out.println(f);
-		}
+			
 		
 	}
 
 	public JFrame getFrame() {
 		return frame;
 	}
-
-	
-
 }
