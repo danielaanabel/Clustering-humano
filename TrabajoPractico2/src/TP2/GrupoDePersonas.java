@@ -42,9 +42,6 @@ public class GrupoDePersonas {
 		return personas;
 	}
 
-	public void setListaDePersonas(ArrayList<Persona> listaDePersonas) {
-		this.personas = listaDePersonas;
-	}
 	
 	public static ArrayList<ArrayList<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
 		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaDePersonas.personas);

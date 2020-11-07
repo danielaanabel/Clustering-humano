@@ -24,7 +24,7 @@ public class Persona {
 
 	public void setiDeportes(int iDeportes) {
 		if(iDeportes<1 || iDeportes>5)
-			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
+			throw new IllegalArgumentException("Se deben ingresar valores entre 1 y 5");
 		this.iDeportes = iDeportes;
 	}
 
@@ -34,7 +34,7 @@ public class Persona {
 
 	public void setiMusica(int iMusica) {
 		if(iMusica<1 || iMusica>5)
-			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
+			throw new IllegalArgumentException("Se deben ingresar valores entre 1 y 5");
 		this.iMusica = iMusica;
 	}
 
@@ -44,7 +44,7 @@ public class Persona {
 
 	public void setiEspectaculos(int iEspectaculos) {
 		if(iEspectaculos<1 || iEspectaculos>5)
-			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
+			throw new IllegalArgumentException("Se deben ingresar valores entre 1 y 5");
 		this.iEspectaculos = iEspectaculos;
 	}
 
@@ -54,7 +54,7 @@ public class Persona {
 
 	public void setiCiencia(int iCiencia) {
 		if(iCiencia<1 || iCiencia>5)
-			throw new RuntimeException("Se deben ingresar valores entre 1 y 5");
+			throw new IllegalArgumentException("Se deben ingresar valores entre 1 y 5");
 		this.iCiencia = iCiencia;
 	}
 

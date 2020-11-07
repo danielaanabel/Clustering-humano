@@ -88,6 +88,5 @@ public class GrupoDePersonasTest {
 		assertEquals(grupo1, GrupoDePersonas.calcularGrupos(personas).get(0));;
 		assertEquals(grupo2, GrupoDePersonas.calcularGrupos(personas).get(1));
 
-
 	}
 }
