@@ -15,7 +15,7 @@ public class Main {
 		personas.agregarPersona("Alicia", 2,5,1,2);
 		personas.agregarPersona("Johana", 4,1,5,2);
 		personas.agregarPersona("Sabrina", 3,1,4,5);
-		personas.agregarPersona("Matheo", 1,5,1,5);
+		personas.agregarPersona("Matheo", 1,5,1,5); 
 
 		String json=personas.generarJSONPretty();
 

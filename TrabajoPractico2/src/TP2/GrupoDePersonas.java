@@ -25,8 +25,17 @@ public class GrupoDePersonas {
 		return personas.size();
 	}
 	
-	public Persona obtenerPersona(int p) {
-	  return personas.get(p);
+	public String obtenerPersona(int p) {
+	  return personas.get(p).getNombre();
+	}
+	
+	public boolean existePersona(String name) {
+		for (Persona p : personas) {
+			if(p.getNombre().equals(name))
+				return true;
+		}
+		return false;
+		
 	}
 
 	public ArrayList<Persona> getPersonas() {
@@ -68,9 +77,8 @@ public class GrupoDePersonas {
 		return json;
 	}
 
-	public void guardarJSON(String jsonParaGuardar,String archivoDestino){
-		try 
-		{
+	public void guardarJSON(String jsonParaGuardar,String archivoDestino) {
+		try {
 			FileWriter writer=new FileWriter(archivoDestino);
 			writer.write(jsonParaGuardar);
 			writer.close();
@@ -85,7 +93,7 @@ public class GrupoDePersonas {
 		Gson gson=new Gson();
 		GrupoDePersonas ret=null;
 
-		try{
+		try {
 			BufferedReader br= new BufferedReader(new FileReader(archivo));
 			ret=gson.fromJson(br, GrupoDePersonas.class);
 

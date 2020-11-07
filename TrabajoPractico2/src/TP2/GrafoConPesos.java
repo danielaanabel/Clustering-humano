@@ -90,7 +90,7 @@ public class GrafoConPesos {
 		int coordenadaY = 0;
 		for(int f=0;f<A.length;++f){
 			for (int c = 0; c <A[0].length; c++){
-				if(A[f][c]!=null && A[f][c]>maximo){
+				if(A[f][c]!=null && A[f][c] > maximo){
 					maximo=A[f][c];
 					coordenadaX=f;
 					coordenadaY=c;
