@@ -1,6 +1,7 @@
 package TP2;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -46,17 +47,17 @@ public class GrupoDePersonas {
 	}
 
 	
-	public static ArrayList<ArrayList<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
+	public static ArrayList<HashSet<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
 		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaDePersonas.personas);
 		grafo=AGM.algoritmoPrim(grafo);
 		grafo.eliminarAristaMayorPeso();
 		return obtenerGrupos(grafo,listaDePersonas.personas);
 	}
 
-	public static ArrayList<ArrayList<String>> obtenerGrupos(GrafoConPesos g,ArrayList<Persona> l) {
-		ArrayList<ArrayList<String>> grupos=new ArrayList<ArrayList<String>>();
-		ArrayList<String> grupo1= new ArrayList<String>();
-		ArrayList<String> grupo2= new ArrayList<String>();
+	public static ArrayList<HashSet<String>> obtenerGrupos(GrafoConPesos g,ArrayList<Persona> l) {
+		ArrayList<HashSet<String>> grupos=new ArrayList<HashSet<String>>();
+		HashSet<String> grupo1= new HashSet<String>();
+		HashSet<String> grupo2= new HashSet<String>();
 
 		for (int i = 0; i <l.size(); i++) {
 			if(BFS.alcanzables(g, 0).contains(i)) 

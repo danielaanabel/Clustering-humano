@@ -2,19 +2,19 @@ package TP2;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class GrupoDePersonasTest {
-	ArrayList<String> grupo1;
-	ArrayList<String> grupo2;
+	HashSet<String> grupo1;
+	HashSet<String> grupo2;
 	
 	@Before
 	public void inicializar() {
-		grupo1=new ArrayList<>();
-		grupo2=new ArrayList<>();
+		grupo1=new HashSet<String>();
+		grupo2=new HashSet<String>();
 
 		grupo1.add("Lucia");
 		grupo1.add("Daniel");
@@ -29,7 +29,7 @@ public class GrupoDePersonasTest {
 		grupo2.add("Sabrina");	
 	}
 
-	@Test
+	@Test 
 	public void existePersonaTest() {
 		GrupoDePersonas listaPersonas =new GrupoDePersonas();
 		listaPersonas.agregarPersona("Leonardo", 4, 1, 3, 5);
@@ -37,14 +37,13 @@ public class GrupoDePersonasTest {
 		assertTrue(listaPersonas.existePersona("Leonardo"));
 	}
 
-	@Test
+	@Test 
 	public void noExistePersonaTest() {
 		GrupoDePersonas listaPersonas =new GrupoDePersonas();
-
-		assertFalse(listaPersonas.existePersona("David"));
+		assertFalse(listaPersonas.existePersona("Rodrigo"));
 	}
 
-	@Test
+	@Test 
 	public void cantidadDePersonasTest() {
 		GrupoDePersonas personas =new GrupoDePersonas();
 		personas.agregarPersona("Lucia", 2,5,2,3);

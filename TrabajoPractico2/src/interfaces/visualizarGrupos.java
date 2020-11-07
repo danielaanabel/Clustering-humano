@@ -3,6 +3,7 @@ package interfaces;
 
 import java.awt.SystemColor;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -15,14 +16,14 @@ import javax.swing.SwingConstants;
 public class visualizarGrupos {
 
 	private JFrame ventanaVerGrupos;
-	private ArrayList<ArrayList<String>> grupos;
+	private ArrayList<HashSet<String>> grupos;
 	private JTable tabla1;
 	private JTable tabla2;
 
 	/**
 	 * Create the application.
 	 */
-	public visualizarGrupos(ArrayList<ArrayList<String>> g) {
+	public visualizarGrupos(ArrayList<HashSet<String>> g) {
 		grupos=g;
 		initialize();
 	}
@@ -77,15 +78,12 @@ public class visualizarGrupos {
 		etiquetaGrupo2.setBounds(251, 27, 57, 26);
 		ventanaVerGrupos.getContentPane().add(etiquetaGrupo2);
 		
-		for(int i=0;i<grupos.size();i++) {
-			for(int j=0;j<grupos.get(i).size();j++) {
-				if(i==0)
-					modelo1.addRow(new Object[] {grupos.get(i).get(j)});
-				else
-					modelo2.addRow(new Object[] {grupos.get(i).get(j)});
-			}
+		for (String nombre : grupos.get(0)) {
+			modelo1.addRow(new Object[] {nombre});
 		}
-			
+		for (String nombre : grupos.get(1)) {
+			modelo2.addRow(new Object[] {nombre});
+		}		
 		
 	}
 
