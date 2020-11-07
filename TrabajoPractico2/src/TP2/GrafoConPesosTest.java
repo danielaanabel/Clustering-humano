@@ -62,7 +62,6 @@ public class GrafoConPesosTest {
 	
 	@Test
 	public void grafoCompletoTest() {
-		
 		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaPersonas);
 		
 		Assert.GrafoCompleto(grafo);		

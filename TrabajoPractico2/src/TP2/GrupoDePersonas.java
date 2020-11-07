@@ -8,9 +8,10 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+
 public class GrupoDePersonas {
 	private ArrayList<Persona> personas;
-
+	
 	public GrupoDePersonas() {
 		personas =new ArrayList<Persona>();
 	}
@@ -36,7 +37,30 @@ public class GrupoDePersonas {
 		this.personas = listaDePersonas;
 	}
 	
+	public static ArrayList<ArrayList<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
+		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaDePersonas.personas);
+		grafo=AGM.algoritmoPrim(grafo);
+		grafo.eliminarAristaMayorPeso();
+		return obtenerGrupos(grafo,listaDePersonas.personas);
+	}
+
+	public static ArrayList<ArrayList<String>> obtenerGrupos(GrafoConPesos g,ArrayList<Persona> l) {
+		ArrayList<ArrayList<String>> grupos=new ArrayList<ArrayList<String>>();
+		ArrayList<String> grupo1= new ArrayList<String>();
+		ArrayList<String> grupo2= new ArrayList<String>();
+
+		for (int i = 0; i <l.size(); i++) {
+			if(BFS.alcanzables(g, 0).contains(i)) 
+				grupo1.add(l.get(i).getNombre());
+			else 
+				grupo2.add(l.get(i).getNombre());
+		}
+		grupos.add(grupo1);
+		grupos.add(grupo2);
+		return grupos;
+	}	
 	
+	//metodos JSON
 	public String generarJSONPretty(){
 		Gson gson=new GsonBuilder().setPrettyPrinting().create();
 		String json= gson.toJson(this);

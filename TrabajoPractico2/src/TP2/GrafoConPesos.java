@@ -85,7 +85,7 @@ public class GrafoConPesos {
 	}
 
 	public void eliminarAristaMayorPeso() {
-		int maximo=0;
+		int maximo=-1;
 		int coordenadaX = 0;
 		int coordenadaY = 0;
 		for(int f=0;f<A.length;++f){

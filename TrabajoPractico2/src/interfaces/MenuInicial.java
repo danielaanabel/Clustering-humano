@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import TP2.Ejecutar;
 import TP2.GrupoDePersonas;
 
 import java.awt.event.ActionListener;
@@ -200,7 +199,7 @@ public class MenuInicial {
 				if(listaPersonas.cantPersonas()==0) 
 					avisoPersonasVacio.setText("Debe agregar personas a la lista");	
 				else {
-					visualizarGrupos verGrupos=new visualizarGrupos(Ejecutar.calcularGrupos(listaPersonas));
+					visualizarGrupos verGrupos=new visualizarGrupos(GrupoDePersonas.calcularGrupos(listaPersonas));
 					verGrupos.getFrame().setVisible(true);
 				}	
 			}
