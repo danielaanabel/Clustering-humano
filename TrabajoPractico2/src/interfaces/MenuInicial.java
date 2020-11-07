@@ -212,15 +212,15 @@ public class MenuInicial {
 		cargarListaJSON.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				listaPersonas=GrupoDePersonas.leerJSON("personas.JSON");
+				GrupoDePersonas listaDePersonasJSON=GrupoDePersonas.leerJSON("personas.JSON");
+				listaPersonas.anexarListaPersonas(listaDePersonasJSON);
 				
-				for (int i = 0; i < listaPersonas.cantPersonas(); i++) {
-	
-					String nombre=listaPersonas.getPersonas().get(i).getNombre();
-					int id=listaPersonas.getPersonas().get(i).getiDeportes();
-					int im=listaPersonas.getPersonas().get(i).getiMusica();
-					int ie=listaPersonas.getPersonas().get(i).getiEspectaculos();
-					int ic=listaPersonas.getPersonas().get(i).getiCiencia();
+				for (int i = 0; i < listaDePersonasJSON.cantPersonas(); i++) {
+					String nombre=listaDePersonasJSON.getPersonas().get(i).getNombre();
+					int id=listaDePersonasJSON.getPersonas().get(i).getiDeportes();
+					int im=listaDePersonasJSON.getPersonas().get(i).getiMusica();
+					int ie=listaDePersonasJSON.getPersonas().get(i).getiEspectaculos();
+					int ic=listaDePersonasJSON.getPersonas().get(i).getiCiencia();
 					
 					modelo.addRow(new Object[] {nombre,id,im,ie,ic});
 				}

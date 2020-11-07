@@ -87,6 +87,22 @@ public class GrupoDePersonasTest {
 
 		assertEquals(grupo1, GrupoDePersonas.calcularGrupos(personas).get(0));;
 		assertEquals(grupo2, GrupoDePersonas.calcularGrupos(personas).get(1));
-
+	}
+	
+	@Test 
+	public void anexarListaDePersonasTest() {
+		GrupoDePersonas listaPersonas =new GrupoDePersonas();
+		listaPersonas.agregarPersona("Lucia", 2,5,2,3);
+		listaPersonas.agregarPersona("Daniel", 1,5,3,3);
+		GrupoDePersonas otraLista =new GrupoDePersonas();
+		otraLista.agregarPersona("Sabrina", 3,1,4,5);
+		otraLista.agregarPersona("Matheo", 1,5,1,5);
+		otraLista.agregarPersona("Alicia", 2,5,1,2);
+		
+		listaPersonas.anexarListaPersonas(otraLista);
+		
+		assertEquals(5,listaPersonas.cantPersonas());
+		
+		
 	}
 }

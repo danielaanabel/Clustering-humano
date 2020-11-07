@@ -35,7 +35,10 @@ public class GrupoDePersonas {
 				return true;
 		}
 		return false;
-		
+	}
+	
+	public void anexarListaPersonas(GrupoDePersonas grupoDePersonas) {
+		personas.addAll(grupoDePersonas.personas);
 	}
 
 	public ArrayList<Persona> getPersonas() {
