@@ -33,7 +33,6 @@ public class visualizarGrupos {
 	 */
 	public visualizarGrupos(ArrayList<HashSet<String>> g) {
 		grupos=g;
-		
 		initialize();
 	}
 
@@ -71,6 +70,7 @@ public class visualizarGrupos {
 		DefaultTableCellRenderer cabecera=new DefaultTableCellRenderer();
 		cabecera.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		cabecera.setBackground(new Color(146, 222, 252));
+		
 		tabla1.getColumnModel().getColumn(0).setHeaderRenderer(cabecera);
 		
 		

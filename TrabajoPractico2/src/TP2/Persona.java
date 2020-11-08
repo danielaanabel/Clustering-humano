@@ -17,6 +17,13 @@ public class Persona {
 		setiEspectaculos(iE);
 		setiCiencia(iC);
 	}
+	
+	public static int similaridad(Persona i, Persona j) {
+		return 	Math.abs(i.iDeportes-j.iDeportes)
+				+Math.abs(i.iMusica-j.iMusica)
+				+Math.abs(i.iEspectaculos-j.iEspectaculos)
+				+Math.abs(i.iCiencia-j.iCiencia);
+	}
 
 	public int getiDeportes() {
 		return iDeportes;

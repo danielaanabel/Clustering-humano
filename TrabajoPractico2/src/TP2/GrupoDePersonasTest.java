@@ -40,6 +40,7 @@ public class GrupoDePersonasTest {
 	@Test 
 	public void noExistePersonaTest() {
 		GrupoDePersonas listaPersonas =new GrupoDePersonas();
+		
 		assertFalse(listaPersonas.existePersona("Rodrigo"));
 	}
 
@@ -84,7 +85,7 @@ public class GrupoDePersonasTest {
 		personas.agregarPersona("Sabrina", 3,1,4,5);
 		personas.agregarPersona("Matheo", 1,5,1,5);
 
-		assertEquals(grupo1, GrupoDePersonas.calcularGrupos(personas).get(0));;
+		assertEquals(grupo1, GrupoDePersonas.calcularGrupos(personas).get(0));
 		assertEquals(grupo2, GrupoDePersonas.calcularGrupos(personas).get(1));
 	}
 	
@@ -100,8 +101,6 @@ public class GrupoDePersonasTest {
 		
 		listaPersonas.anexarListaPersonas(otraLista);
 		
-		assertEquals(5,listaPersonas.cantPersonas());
-		
-		
+		assertEquals(5,listaPersonas.cantPersonas());			
 	}
 }

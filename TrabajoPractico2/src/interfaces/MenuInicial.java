@@ -3,7 +3,6 @@ package interfaces;
 
 import java.awt.EventQueue;
 
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -28,8 +27,6 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-
 
 
 public class MenuInicial {
@@ -82,6 +79,7 @@ public class MenuInicial {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		ventanaInicio = new JFrame();
 		ventanaInicio.setIconImage(Toolkit.getDefaultToolkit().getImage(MenuInicial.class.getResource("/img/icono.png")));
 		ventanaInicio.setTitle("Clustering humano");
@@ -90,7 +88,7 @@ public class MenuInicial {
 		ventanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaInicio.getContentPane().setLayout(null);
 		
-		JLabel intereses = new JLabel("Seleccione sus intereses  \r\n(siendo 1 el mas bajo y 5 es mas alto)");
+		JLabel intereses = new JLabel("Seleccione sus intereses (siendo 1 el mas bajo y 5 es mas alto)");
 		intereses.setBackground(Color.WHITE);
 		intereses.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		intereses.setBounds(10, 117, 410, 30);
@@ -128,7 +126,6 @@ public class MenuInicial {
 
 		deportes = new JSlider();
 		deportes.setBackground(Color.WHITE);
-		
 		deportes.setToolTipText("");
 		deportes.setPaintLabels(true);
 		deportes.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
@@ -272,7 +269,7 @@ public class MenuInicial {
 					limpiarDatos();
 				}
 			}});
-		guardarPersona.setBounds(119, 405, 150, 38);
+		guardarPersona.setBounds(118, 364, 150, 38);
 		ventanaInicio.getContentPane().add(guardarPersona);
 
 		JButton ejecutar = new JButton("Calcular Grupos");
@@ -315,12 +312,10 @@ public class MenuInicial {
 				cargarListaJSON.setBackground(Color.white);
 			}
 		});
-		
 		cargarListaJSON.setBorder(new LineBorder(new Color(191, 205, 219), 2, true));
 		cargarListaJSON.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		cargarListaJSON.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				GrupoDePersonas listaDePersonasJSON=GrupoDePersonas.leerJSON("personas.JSON");
 				listaPersonas.anexarListaPersonas(listaDePersonasJSON);
 				
@@ -335,7 +330,7 @@ public class MenuInicial {
 				}
 			}
 		});
-		cargarListaJSON.setBounds(32, 351, 263, 30);
+		cargarListaJSON.setBounds(61, 423, 263, 30);
 		ventanaInicio.getContentPane().add(cargarListaJSON);
 		
 		JLabel fondoJSlide = new JLabel("");

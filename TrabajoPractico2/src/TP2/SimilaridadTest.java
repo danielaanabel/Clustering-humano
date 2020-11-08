@@ -29,7 +29,7 @@ public class SimilaridadTest {
 	public void similaridadCorrectaTest() {
 		GrafoConPesos grafo=new GrafoConPesos(2);
 		
-		int p1=grafo.similaridad(listaPersonas.get(0),listaPersonas.get(1));
+		int p1=Persona.similaridad(listaPersonas.get(0),listaPersonas.get(1));
 		grafo.agregarAristaConPeso(0, 1, p1);
 		
 		assertEquals(grafo.obtenerPesoArista(0, 1), 4);
@@ -39,7 +39,7 @@ public class SimilaridadTest {
 	public void similaridadIgualTest() {
 		GrafoConPesos grafo=new GrafoConPesos(4);
 		
-		int p1=grafo.similaridad(listaPersonas.get(2),listaPersonas.get(3));
+		int p1=Persona.similaridad(listaPersonas.get(2),listaPersonas.get(3));
 		grafo.agregarAristaConPeso(2, 3, p1);
 		
 		assertEquals(grafo.obtenerPesoArista(2, 3),0);	

@@ -77,18 +77,12 @@ public class GrafoConPesos {
 		return ret;		
 	}
 
-	public int similaridad(Persona i, Persona j) {
-		return 	Math.abs(i.getiDeportes()-j.getiDeportes())
-				+Math.abs(i.getiMusica()-j.getiMusica())
-				+Math.abs(i.getiEspectaculos()-j.getiEspectaculos())
-				+Math.abs(i.getiCiencia()-j.getiCiencia());
-	}
 
 	public void eliminarAristaMayorPeso() {
 		int maximo=-1;
 		int coordenadaX = 0;
 		int coordenadaY = 0;
-		for(int f=0;f<A.length;++f){
+		for(int f=0;f<A.length;f++){
 			for (int c = 0; c <A[0].length; c++){
 				if(A[f][c]!=null && A[f][c] > maximo){
 					maximo=A[f][c];
@@ -106,7 +100,7 @@ public class GrafoConPesos {
 
 		for(int i=0;i<grafo.tamano();i++) {
 			for(int j=0;j<grafo.tamano();j++) if(i!=j) {
-					int peso=grafo.similaridad(listaDePersonas.get(i), listaDePersonas.get(j));
+					int peso=Persona.similaridad(listaDePersonas.get(i), listaDePersonas.get(j));
 					grafo.agregarAristaConPeso(i, j, peso);
 				}
 		}
