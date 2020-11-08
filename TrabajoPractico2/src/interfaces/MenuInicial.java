@@ -12,23 +12,23 @@ import javax.swing.UIManager;
 import javax.swing.JSlider;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import TP2.GrupoDePersonas;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.Font;
-import java.awt.Cursor;
-import javax.swing.DebugGraphics;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 
 
@@ -89,6 +89,12 @@ public class MenuInicial {
 		ventanaInicio.setBounds(100, 100, 687, 504);
 		ventanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaInicio.getContentPane().setLayout(null);
+		
+		JLabel intereses = new JLabel("Seleccione sus intereses  \r\n(siendo 1 el mas bajo y 5 es mas alto)");
+		intereses.setBackground(Color.WHITE);
+		intereses.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		intereses.setBounds(10, 117, 410, 30);
+		ventanaInicio.getContentPane().add(intereses);
 
 		JLabel agregarPersona = new JLabel("Agregar Personas");
 		agregarPersona.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
@@ -121,6 +127,8 @@ public class MenuInicial {
 		nombre.setColumns(10);
 
 		deportes = new JSlider();
+		deportes.setBackground(Color.WHITE);
+		
 		deportes.setToolTipText("");
 		deportes.setPaintLabels(true);
 		deportes.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
@@ -133,6 +141,7 @@ public class MenuInicial {
 		ventanaInicio.getContentPane().add(deportes);
 
 		musica = new JSlider();
+		musica.setBackground(Color.WHITE);
 		musica.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		musica.setRequestFocusEnabled(false);
 		musica.setValue(1);
@@ -144,6 +153,7 @@ public class MenuInicial {
 		ventanaInicio.getContentPane().add(musica);
 
 		espectaculos = new JSlider();
+		espectaculos.setBackground(Color.WHITE);
 		espectaculos.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		espectaculos.setRequestFocusEnabled(false);
 		espectaculos.setValue(1);
@@ -155,6 +165,7 @@ public class MenuInicial {
 		ventanaInicio.getContentPane().add(espectaculos);
 
 		ciencia = new JSlider();
+		ciencia.setBackground(Color.WHITE);
 		ciencia.setName("");
 		ciencia.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		ciencia.setRequestFocusEnabled(false);
@@ -165,11 +176,6 @@ public class MenuInicial {
 		ciencia.setMajorTickSpacing(1);
 		ciencia.setBounds(138, 296, 200, 33);
 		ventanaInicio.getContentPane().add(ciencia);
-
-		JLabel intereses = new JLabel("Seleccione sus intereses (siendo 1 el mas bajo y 5 es mas alto)");
-		intereses.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
-		intereses.setBounds(10, 117, 402, 30);
-		ventanaInicio.getContentPane().add(intereses);
 
 		JLabel etiquetaDeportes = new JLabel("Deportes");
 		etiquetaDeportes.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
@@ -198,13 +204,19 @@ public class MenuInicial {
 		modelo.addColumn("iE");
 		modelo.addColumn("iC");
 		
+		
 		table = new JTable();
-		table.setGridColor(SystemColor.inactiveCaption);
+		table.setRowSelectionAllowed(false);
+		table.setShowVerticalLines(false);
+		table.setFocusable(false);
+		table.setSelectionForeground(Color.BLACK);
+		table.setSelectionBackground(SystemColor.activeCaption);
+		table.setBackground(Color.WHITE);
+		table.setGridColor(SystemColor.activeCaption);
 		table.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		table.setBorder(null);
 		table.setRowHeight(22);
 		table.setModel(modelo);
-		//table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
 		table.getColumnModel().getColumn(0).setMaxWidth(99);
 		table.getColumnModel().getColumn(1).setMaxWidth(38);
 		table.getColumnModel().getColumn(2).setMaxWidth(38);
@@ -212,13 +224,35 @@ public class MenuInicial {
 		table.getColumnModel().getColumn(4).setMaxWidth(38);
 		table.setBounds(400, 120, 251, 209);
 		
+		DefaultTableCellRenderer cabecera=new DefaultTableCellRenderer();
+		cabecera.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+		cabecera.setBackground(new Color(146, 222, 252));
+		table.getColumnModel().getColumn(0).setHeaderRenderer(cabecera);
+		table.getColumnModel().getColumn(1).setHeaderRenderer(cabecera);
+		table.getColumnModel().getColumn(2).setHeaderRenderer(cabecera);
+		table.getColumnModel().getColumn(3).setHeaderRenderer(cabecera);
+		table.getColumnModel().getColumn(4).setHeaderRenderer(cabecera);
+		
+		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
 		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
 		scrollPane.setBounds(391, 158, 257, 222);
 		ventanaInicio.getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
 
 		JButton guardarPersona = new JButton("Guardar Datos");
+		guardarPersona.setFocusable(false);
+		guardarPersona.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				guardarPersona.setBackground(new Color(146, 222, 252));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				guardarPersona.setBackground(Color.white);
+			}
+		});
 		guardarPersona.setBorder(new LineBorder(SystemColor.inactiveCaption, 2, true));
 		guardarPersona.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		guardarPersona.addActionListener(new ActionListener() {
@@ -242,6 +276,17 @@ public class MenuInicial {
 		ventanaInicio.getContentPane().add(guardarPersona);
 
 		JButton ejecutar = new JButton("Calcular Grupos");
+		ejecutar.setFocusable(false);
+		ejecutar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ejecutar.setBackground(new Color(146, 222, 252));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ejecutar.setBackground(Color.white);
+			}
+		});
 		ejecutar.setBorder(new LineBorder(SystemColor.inactiveCaption, 2));
 		ejecutar.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		ejecutar.addActionListener(new ActionListener() {
@@ -259,6 +304,18 @@ public class MenuInicial {
 		
 		
 		JButton cargarListaJSON = new JButton("Cargar lista pre-cargada");
+		cargarListaJSON.setFocusable(false);
+		cargarListaJSON.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				cargarListaJSON.setBackground(new Color(146, 222, 252));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				cargarListaJSON.setBackground(Color.white);
+			}
+		});
+		
 		cargarListaJSON.setBorder(new LineBorder(new Color(191, 205, 219), 2, true));
 		cargarListaJSON.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		cargarListaJSON.addActionListener(new ActionListener() {
@@ -281,10 +338,17 @@ public class MenuInicial {
 		cargarListaJSON.setBounds(32, 351, 263, 30);
 		ventanaInicio.getContentPane().add(cargarListaJSON);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(MenuInicial.class.getResource("/img/grafoPersonas2.png")));
-		lblNewLabel.setBounds(0, 0, 681, 475);
-		ventanaInicio.getContentPane().add(lblNewLabel);
+		JLabel fondoJSlide = new JLabel("");
+		fondoJSlide.setIcon(new ImageIcon(MenuInicial.class.getResource("/img/fondo_blanco.jpg")));
+		fondoJSlide.setForeground(new Color(0, 0, 0));
+		fondoJSlide.setBackground(Color.WHITE);
+		fondoJSlide.setBounds(138, 158, 200, 171);
+		ventanaInicio.getContentPane().add(fondoJSlide);
+		
+		JLabel fondo = new JLabel("");
+		fondo.setIcon(new ImageIcon(MenuInicial.class.getResource("/img/grafoPersonas2.png")));
+		fondo.setBounds(0, 0, 681, 475);
+		ventanaInicio.getContentPane().add(fondo);
 	}
 
 	public void limpiarDatos() {

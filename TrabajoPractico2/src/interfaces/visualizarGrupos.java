@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -17,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Toolkit;
 import java.awt.Font;
+import java.awt.Color;
 
 
 public class visualizarGrupos {
@@ -41,6 +43,7 @@ public class visualizarGrupos {
 	private void initialize() {
 		
 		ventanaVerGrupos = new JFrame();
+		ventanaVerGrupos.getContentPane().setBackground(Color.WHITE);
 		ventanaVerGrupos.setIconImage(Toolkit.getDefaultToolkit().getImage(visualizarGrupos.class.getResource("/img/icono.png")));
 		ventanaVerGrupos.setTitle("Clustering humano");
 		ventanaVerGrupos.setResizable(false);
@@ -56,14 +59,31 @@ public class visualizarGrupos {
 		
 		
 		tabla1 = new JTable();
+		tabla1.setRowSelectionAllowed(false);
+		tabla1.setShowGrid(false);
+		tabla1.setFocusable(false);
+		tabla1.setSelectionBackground(SystemColor.activeCaption);
+		tabla1.setGridColor(SystemColor.activeCaption);
 		tabla1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		tabla1.setBounds(43, 64, 137, 299);
 		tabla1.setModel(modelo1);
 		
+		DefaultTableCellRenderer cabecera=new DefaultTableCellRenderer();
+		cabecera.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		cabecera.setBackground(new Color(146, 222, 252));
+		tabla1.getColumnModel().getColumn(0).setHeaderRenderer(cabecera);
+		
+		
 		tabla2 = new JTable();
+		tabla2.setRowSelectionAllowed(false);
+		tabla2.setFocusable(false);
+		tabla2.setSelectionBackground(SystemColor.activeCaption);
+		tabla2.setShowGrid(false);
 		tabla2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		tabla2.setBounds(218, 64, 137, 299);
 		tabla2.setModel(modelo2);
+		
+		tabla2.getColumnModel().getColumn(0).setHeaderRenderer(cabecera);
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
