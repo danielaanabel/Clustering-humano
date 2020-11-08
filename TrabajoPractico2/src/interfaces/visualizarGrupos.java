@@ -10,8 +10,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+
+
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import java.awt.Font;
+
 
 public class visualizarGrupos {
 
@@ -25,6 +31,7 @@ public class visualizarGrupos {
 	 */
 	public visualizarGrupos(ArrayList<HashSet<String>> g) {
 		grupos=g;
+		
 		initialize();
 	}
 
@@ -34,9 +41,10 @@ public class visualizarGrupos {
 	private void initialize() {
 		
 		ventanaVerGrupos = new JFrame();
+		ventanaVerGrupos.setIconImage(Toolkit.getDefaultToolkit().getImage(visualizarGrupos.class.getResource("/img/icono.png")));
 		ventanaVerGrupos.setTitle("Clustering humano");
 		ventanaVerGrupos.setResizable(false);
-		ventanaVerGrupos.setBounds(770, 100, 400, 481);
+		ventanaVerGrupos.setBounds(790, 100, 400, 504);
 		ventanaVerGrupos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaVerGrupos.getContentPane().setLayout(null);
 		
@@ -48,10 +56,12 @@ public class visualizarGrupos {
 		
 		
 		tabla1 = new JTable();
+		tabla1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		tabla1.setBounds(43, 64, 137, 299);
 		tabla1.setModel(modelo1);
 		
 		tabla2 = new JTable();
+		tabla2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		tabla2.setBounds(218, 64, 137, 299);
 		tabla2.setModel(modelo2);
 		
@@ -69,13 +79,15 @@ public class visualizarGrupos {
 		scrollPane2.setViewportView(tabla2);
 		
 		JLabel etiquetaGrupo1 = new JLabel("Grupo 1");
+		etiquetaGrupo1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		etiquetaGrupo1.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaGrupo1.setBounds(79, 27, 57, 26);
+		etiquetaGrupo1.setBounds(71, 27, 76, 26);
 		ventanaVerGrupos.getContentPane().add(etiquetaGrupo1);
 		
 		JLabel etiquetaGrupo2 = new JLabel("Grupo 2");
+		etiquetaGrupo2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		etiquetaGrupo2.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaGrupo2.setBounds(251, 27, 57, 26);
+		etiquetaGrupo2.setBounds(243, 27, 76, 26);
 		ventanaVerGrupos.getContentPane().add(etiquetaGrupo2);
 		
 		for (String nombre : grupos.get(0)) {

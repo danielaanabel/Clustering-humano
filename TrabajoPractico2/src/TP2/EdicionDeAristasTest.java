@@ -50,8 +50,7 @@ public class EdicionDeAristasTest {
 	}
 
 	@Test
-	public void aristaExistenteTest()
-	{
+	public void aristaExistenteTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 3, 5);
 		assertTrue( grafo.existeArista(2, 3) );

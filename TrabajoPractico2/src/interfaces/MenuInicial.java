@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JSlider;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -15,10 +16,20 @@ import javax.swing.table.DefaultTableModel;
 
 import TP2.GrupoDePersonas;
 
-import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.Cursor;
+import javax.swing.DebugGraphics;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+
 
 
 public class MenuInicial {
@@ -40,6 +51,7 @@ public class MenuInicial {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -50,12 +62,18 @@ public class MenuInicial {
 				}
 			}
 		});
+		
 	}
 
 	/**
 	 * Create the application.
 	 */
 	public MenuInicial() {
+		try {
+			UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		listaPersonas=new GrupoDePersonas();
 		initialize();
 	}
@@ -65,87 +83,112 @@ public class MenuInicial {
 	 */
 	private void initialize() {
 		ventanaInicio = new JFrame();
+		ventanaInicio.setIconImage(Toolkit.getDefaultToolkit().getImage(MenuInicial.class.getResource("/img/icono.png")));
 		ventanaInicio.setTitle("Clustering humano");
 		ventanaInicio.setResizable(false);
-		ventanaInicio.setBounds(100, 100, 683, 481);
+		ventanaInicio.setBounds(100, 100, 687, 504);
 		ventanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaInicio.getContentPane().setLayout(null);
 
 		JLabel agregarPersona = new JLabel("Agregar Personas");
-		agregarPersona.setBounds(98, 11, 128, 33);
+		agregarPersona.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
+		agregarPersona.setBounds(96, 17, 172, 33);
 		ventanaInicio.getContentPane().add(agregarPersona);
 
 		JLabel ingreseNombre = new JLabel("Ingrese nombre:");
-		ingreseNombre.setBounds(11, 62, 98, 33);
+		ingreseNombre.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		ingreseNombre.setBounds(10, 61, 109, 33);
 		ventanaInicio.getContentPane().add(ingreseNombre);
 
 		avisoPersonasVacio = new JLabel("");
-		avisoPersonasVacio.setBounds(432, 351, 200, 18);
+		avisoPersonasVacio.setHorizontalAlignment(SwingConstants.CENTER);
+		avisoPersonasVacio.setForeground(Color.RED);
+		avisoPersonasVacio.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		avisoPersonasVacio.setBounds(401, 380, 225, 22);
 		ventanaInicio.getContentPane().add(avisoPersonasVacio);
 
 		aviso = new JLabel("");
-		aviso.setBounds(289, 66, 251, 18);
+		aviso.setForeground(Color.RED);
+		aviso.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+		aviso.setBounds(67, 99, 271, 18);
 		ventanaInicio.getContentPane().add(aviso);
 
 		nombre = new JTextField();
-		nombre.setBounds(119, 62, 150, 33);
+		nombre.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+		nombre.setBorder(new LineBorder(SystemColor.inactiveCaption, 2, true));
+		nombre.setBounds(129, 62, 150, 33);
 		ventanaInicio.getContentPane().add(nombre);
 		nombre.setColumns(10);
 
 		deportes = new JSlider();
-		deportes.setMajorTickSpacing(1);
+		deportes.setToolTipText("");
 		deportes.setPaintLabels(true);
+		deportes.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+		deportes.setRequestFocusEnabled(false);
+		deportes.setMajorTickSpacing(1);
 		deportes.setValue(1);
 		deportes.setMinimum(1);
 		deportes.setMaximum(5);
-		deportes.setBounds(115, 164, 200, 33);
+		deportes.setBounds(138, 164, 200, 33);
 		ventanaInicio.getContentPane().add(deportes);
 
 		musica = new JSlider();
+		musica.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+		musica.setRequestFocusEnabled(false);
 		musica.setValue(1);
 		musica.setPaintLabels(true);
 		musica.setMinimum(1);
 		musica.setMaximum(5);
 		musica.setMajorTickSpacing(1);
-		musica.setBounds(115, 208, 200, 33);
+		musica.setBounds(138, 208, 200, 33);
 		ventanaInicio.getContentPane().add(musica);
 
 		espectaculos = new JSlider();
+		espectaculos.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+		espectaculos.setRequestFocusEnabled(false);
 		espectaculos.setValue(1);
 		espectaculos.setPaintLabels(true);
 		espectaculos.setMinimum(1);
 		espectaculos.setMaximum(5);
 		espectaculos.setMajorTickSpacing(1);
-		espectaculos.setBounds(115, 252, 200, 33);
+		espectaculos.setBounds(138, 252, 200, 33);
 		ventanaInicio.getContentPane().add(espectaculos);
 
 		ciencia = new JSlider();
+		ciencia.setName("");
+		ciencia.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+		ciencia.setRequestFocusEnabled(false);
 		ciencia.setValue(1);
 		ciencia.setPaintLabels(true);
 		ciencia.setMinimum(1);
 		ciencia.setMaximum(5);
 		ciencia.setMajorTickSpacing(1);
-		ciencia.setBounds(115, 296, 200, 33);
+		ciencia.setBounds(138, 296, 200, 33);
 		ventanaInicio.getContentPane().add(ciencia);
 
 		JLabel intereses = new JLabel("Seleccione sus intereses (siendo 1 el mas bajo y 5 es mas alto)");
-		intereses.setBounds(10, 117, 362, 22);
+		intereses.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		intereses.setBounds(10, 117, 402, 30);
 		ventanaInicio.getContentPane().add(intereses);
 
 		JLabel etiquetaDeportes = new JLabel("Deportes");
+		etiquetaDeportes.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		etiquetaDeportes.setBounds(21, 164, 70, 22);
 		ventanaInicio.getContentPane().add(etiquetaDeportes);
 
 		JLabel etiquetaMusica = new JLabel("M\u00FAsica");
+		etiquetaMusica.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		etiquetaMusica.setBounds(21, 208, 70, 14);
 		ventanaInicio.getContentPane().add(etiquetaMusica);
 
 		JLabel etiquetaEspectaculos = new JLabel("Espect\u00E1culos");
-		etiquetaEspectaculos.setBounds(21, 255, 84, 14);
+		etiquetaEspectaculos.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		etiquetaEspectaculos.setBounds(21, 252, 98, 14);
 		ventanaInicio.getContentPane().add(etiquetaEspectaculos);
 
 		JLabel etiquetaCiencia = new JLabel("Ciencia");
-		etiquetaCiencia.setBounds(21, 296, 84, 14);
+		etiquetaCiencia.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+		etiquetaCiencia.setBounds(21, 296, 86, 18);
 		ventanaInicio.getContentPane().add(etiquetaCiencia);
 		
 		modelo=new DefaultTableModel();
@@ -156,23 +199,28 @@ public class MenuInicial {
 		modelo.addColumn("iC");
 		
 		table = new JTable();
+		table.setGridColor(SystemColor.inactiveCaption);
+		table.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		table.setBorder(null);
 		table.setRowHeight(22);
 		table.setModel(modelo);
-		table.getColumnModel().getColumn(0).setMinWidth(90);
-		table.getColumnModel().getColumn(1).setMinWidth(35);
-		table.getColumnModel().getColumn(2).setMinWidth(35);
-		table.getColumnModel().getColumn(3).setMinWidth(35);
-		table.getColumnModel().getColumn(4).setMinWidth(35);
+		//table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+		table.getColumnModel().getColumn(0).setMaxWidth(99);
+		table.getColumnModel().getColumn(1).setMaxWidth(38);
+		table.getColumnModel().getColumn(2).setMaxWidth(38);
+		table.getColumnModel().getColumn(3).setMaxWidth(38);
+		table.getColumnModel().getColumn(4).setMaxWidth(38);
 		table.setBounds(400, 120, 251, 209);
-
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(SystemColor.inactiveCaption, 5, true));
-		scrollPane.setBounds(400, 120, 251, 209);
+		scrollPane.setBounds(391, 158, 257, 222);
 		ventanaInicio.getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
 
 		JButton guardarPersona = new JButton("Guardar Datos");
+		guardarPersona.setBorder(new LineBorder(SystemColor.inactiveCaption, 2, true));
+		guardarPersona.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		guardarPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(nombre.getText().length()<3 || nombre.getText().length()>12) 
@@ -190,10 +238,12 @@ public class MenuInicial {
 					limpiarDatos();
 				}
 			}});
-		guardarPersona.setBounds(119, 392, 150, 38);
+		guardarPersona.setBounds(119, 405, 150, 38);
 		ventanaInicio.getContentPane().add(guardarPersona);
 
 		JButton ejecutar = new JButton("Calcular Grupos");
+		ejecutar.setBorder(new LineBorder(SystemColor.inactiveCaption, 2));
+		ejecutar.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(listaPersonas.cantPersonas()==0) 
@@ -204,11 +254,13 @@ public class MenuInicial {
 				}	
 			}
 		});
-		ejecutar.setBounds(446, 392, 143, 38);
+		ejecutar.setBounds(446, 405, 143, 38);
 		ventanaInicio.getContentPane().add(ejecutar);
 		
 		
 		JButton cargarListaJSON = new JButton("Cargar lista pre-cargada");
+		cargarListaJSON.setBorder(new LineBorder(new Color(191, 205, 219), 2, true));
+		cargarListaJSON.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		cargarListaJSON.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -226,8 +278,13 @@ public class MenuInicial {
 				}
 			}
 		});
-		cargarListaJSON.setBounds(32, 351, 258, 23);
+		cargarListaJSON.setBounds(32, 351, 263, 30);
 		ventanaInicio.getContentPane().add(cargarListaJSON);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(MenuInicial.class.getResource("/img/grafoPersonas2.png")));
+		lblNewLabel.setBounds(0, 0, 681, 475);
+		ventanaInicio.getContentPane().add(lblNewLabel);
 	}
 
 	public void limpiarDatos() {
