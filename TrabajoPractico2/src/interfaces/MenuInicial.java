@@ -255,7 +255,7 @@ public class MenuInicial {
 		guardarPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(nombre.getText().length()<3 || nombre.getText().length()>12) 
-					aviso.setText("¡Debe ingresar nombres entre 2 y 12 letras!");
+					aviso.setText("¡Debe ingresar nombres entre 3 y 12 letras!");
 				else {
 					Object[] nuevaFila= {nombre.getText(),deportes.getValue(),musica.getValue(),
 							espectaculos.getValue(),ciencia.getValue()};

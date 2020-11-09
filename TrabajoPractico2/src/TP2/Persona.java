@@ -71,7 +71,7 @@ public class Persona {
 
 	public void setNombre(String nombre) {
 		if(nombre.length()<3 || nombre.length()>12)
-			throw new IllegalArgumentException("¡Debe ingresar nombres entre 2 y 12 letras!");
+			throw new IllegalArgumentException("¡Debe ingresar nombres entre 3 y 12 letras!");
 		this.nombre = nombre;
 	}
 	

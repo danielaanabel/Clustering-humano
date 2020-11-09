@@ -66,24 +66,13 @@ public class GrupoDePersonasTest {
 		personas.agregarPersona("Fabian", 2,5,2,5);
 		personas.agregarPersona("Adrian", 1,5,3,4);
 		personas.agregarPersona("Valentina", 3,3,2,3);
-		personas.agregarPersona("Federico", 2,1,3,4);
 
 		assertEquals(personas.obtenerPersona(3), "Adrian");
 	}
 
 	@Test 
 	public void calcularGruposTest() {
-		GrupoDePersonas personas=new GrupoDePersonas();
-		personas.agregarPersona("Lucia", 2,5,2,3);
-		personas.agregarPersona("Daniel", 1,5,3,3);
-		personas.agregarPersona("Fabian", 2,5,2,5);
-		personas.agregarPersona("Adrian", 1,5,3,4);
-		personas.agregarPersona("Valentina", 3,3,2,3);
-		personas.agregarPersona("Federico", 2,1,3,4);
-		personas.agregarPersona("Alicia", 2,5,1,2);
-		personas.agregarPersona("Johana", 4,1,5,2);
-		personas.agregarPersona("Sabrina", 3,1,4,5);
-		personas.agregarPersona("Matheo", 1,5,1,5);
+		GrupoDePersonas personas=GrupoDePersonas.leerJSON("personas.JSON");
 
 		assertEquals(grupo1, GrupoDePersonas.calcularGrupos(personas).get(0));
 		assertEquals(grupo2, GrupoDePersonas.calcularGrupos(personas).get(1));
