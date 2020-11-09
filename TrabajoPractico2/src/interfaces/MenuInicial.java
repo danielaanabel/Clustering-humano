@@ -105,10 +105,11 @@ public class MenuInicial {
 		ventanaInicio.getContentPane().add(ingreseNombre);
 
 		avisoPersonasVacio = new JLabel("");
+		avisoPersonasVacio.setBackground(Color.WHITE);
 		avisoPersonasVacio.setHorizontalAlignment(SwingConstants.CENTER);
 		avisoPersonasVacio.setForeground(Color.RED);
 		avisoPersonasVacio.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
-		avisoPersonasVacio.setBounds(401, 380, 225, 22);
+		avisoPersonasVacio.setBounds(414, 380, 225, 22);
 		ventanaInicio.getContentPane().add(avisoPersonasVacio);
 
 		aviso = new JLabel("");
@@ -327,6 +328,7 @@ public class MenuInicial {
 					int ic=listaDePersonasJSON.getPersonas().get(i).getiCiencia();
 					
 					modelo.addRow(new Object[] {nombre,id,im,ie,ic});
+					avisoPersonasVacio.setText("");
 				}
 			}
 		});

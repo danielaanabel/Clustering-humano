@@ -33,5 +33,13 @@ public class AGMTest {
 		Assert.grafoIgual(AGM.algoritmoPrim(grafo), esperado);	
 	}
 	
+	@Test (expected = RuntimeException.class)
+	public void agmVacioTest() {
+		GrafoConPesos obtenido=new GrafoConPesos(0);
+		GrafoConPesos esperado=new GrafoConPesos(0);
+	
+		Assert.grafoIgual(AGM.algoritmoPrim(obtenido), esperado);	
+	}
+	
 
 }

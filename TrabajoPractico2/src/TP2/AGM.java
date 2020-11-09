@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class AGM {
 
-	public static GrafoConPesos algoritmoPrim(GrafoConPesos g) {	
+	public static GrafoConPesos algoritmoPrim(GrafoConPesos g) {
+		
+		verificarGrafoNoVacio(g);
 		GrafoConPesos agm=new GrafoConPesos(g.tamano());
 
 		ArrayList<Integer> marcados=new ArrayList<Integer>();
@@ -34,6 +36,12 @@ public class AGM {
 			i++;
 		}
 		return agm;
+	}
+
+	private static void verificarGrafoNoVacio(GrafoConPesos g) {
+		if(g.tamano()==0)
+			throw new RuntimeException("No se puede generar un AGM de un grafo vacio");
+		
 	}
 
 
