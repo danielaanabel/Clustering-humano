@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class AGM {
 
 	public static GrafoConPesos algoritmoPrim(GrafoConPesos g) {
-		
 		verificarGrafoNoVacio(g);
+		
 		GrafoConPesos agm=new GrafoConPesos(g.tamano());
 
 		ArrayList<Integer> marcados=new ArrayList<Integer>();
-		marcados.add(0);//agrego el vertice inicial arbitrario
+		marcados.add(0);//marco el vertice inicial
 
 		boolean[] verticesG=new boolean[g.tamano()];//vertices aun no marcados
 		verticesG[0]=true;
