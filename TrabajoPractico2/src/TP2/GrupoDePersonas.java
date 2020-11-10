@@ -47,29 +47,6 @@ public class GrupoDePersonas {
 	}
 
 	
-	public static ArrayList<HashSet<String>> calcularGrupos(GrupoDePersonas listaDePersonas) {
-		GrafoConPesos grafo=GrafoConPesos.construirGrafoCompleto(listaDePersonas.personas);
-		grafo=AGM.algoritmoPrim(grafo);
-		grafo.eliminarAristaMayorPeso();
-		return obtenerGrupos(grafo,listaDePersonas.personas);
-	}
-
-	public static ArrayList<HashSet<String>> obtenerGrupos(GrafoConPesos g,ArrayList<Persona> l) {
-		ArrayList<HashSet<String>> grupos=new ArrayList<HashSet<String>>();
-		HashSet<String> grupo1= new HashSet<String>();
-		HashSet<String> grupo2= new HashSet<String>();
-
-		for (int i = 0; i <l.size(); i++) {
-			if(BFS.alcanzables(g, 0).contains(i)) 
-				grupo1.add(l.get(i).getNombre());
-			else 
-				grupo2.add(l.get(i).getNombre());
-		}
-		grupos.add(grupo1);
-		grupos.add(grupo2);
-		return grupos;
-	}	
-	
 	//metodos JSON
 	public String generarJSONPretty(){
 		Gson gson=new GsonBuilder().setPrettyPrinting().create();

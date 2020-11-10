@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import TP2.Ejecutar;
 import TP2.GrupoDePersonas;
 
 import java.awt.event.ActionEvent;
@@ -201,8 +202,7 @@ public class MenuInicial {
 		modelo.addColumn("iM");
 		modelo.addColumn("iE");
 		modelo.addColumn("iC");
-		
-		
+			
 		table = new JTable();
 		table.setRowSelectionAllowed(false);
 		table.setShowVerticalLines(false);
@@ -229,8 +229,7 @@ public class MenuInicial {
 		table.getColumnModel().getColumn(1).setHeaderRenderer(cabecera);
 		table.getColumnModel().getColumn(2).setHeaderRenderer(cabecera);
 		table.getColumnModel().getColumn(3).setHeaderRenderer(cabecera);
-		table.getColumnModel().getColumn(4).setHeaderRenderer(cabecera);
-		
+		table.getColumnModel().getColumn(4).setHeaderRenderer(cabecera);	
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(Color.WHITE);
@@ -292,14 +291,13 @@ public class MenuInicial {
 				if(listaPersonas.cantPersonas()==0) 
 					avisoPersonasVacio.setText("Debe agregar personas a la lista");	
 				else {
-					visualizarGrupos verGrupos=new visualizarGrupos(GrupoDePersonas.calcularGrupos(listaPersonas));
+					visualizarGrupos verGrupos=new visualizarGrupos(Ejecutar.calcularGrupos(listaPersonas));
 					verGrupos.getFrame().setVisible(true);
 				}	
 			}
 		});
 		ejecutar.setBounds(446, 405, 143, 38);
 		ventanaInicio.getContentPane().add(ejecutar);
-		
 		
 		JButton cargarListaJSON = new JButton("Cargar lista pre-cargada");
 		cargarListaJSON.setFocusable(false);
