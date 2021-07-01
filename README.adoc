@@ -22,3 +22,6 @@ El índice de similaridad entre dos personas i y j se define como: similaridad(i
 .Imagen del proyecto
 image::imagenProyecto.jpg[]
 
+.Resultado al ejecutar
+image::imagenProyecto2.jpg[]
+
