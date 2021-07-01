@@ -1,9 +1,11 @@
-package logica;
+package test;
 
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
+
+import logica.GrupoDePersonas;
 
 public class GrupoDePersonasTest {
 
@@ -33,7 +35,6 @@ public class GrupoDePersonasTest {
 		personas.agregarPersona("Federico", 2,1,3,4);
 
 		assertEquals(personas.cantPersonas(), 6);
-
 	}
 
 	@Test

@@ -26,6 +26,4 @@ public class Ejecutar {
 		grupos.add(grupo2);
 		return grupos;
 	}	
-	
-
 }

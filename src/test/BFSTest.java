@@ -1,10 +1,12 @@
-package logica;
+package test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import logica.BFS;
+import logica.GrafoConPesos;
 
 public class BFSTest {
  
@@ -65,5 +67,4 @@ public class BFSTest {
 		
 		assertFalse(BFS.esConexo(grafo));
 	}
-
 }

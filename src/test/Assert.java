@@ -1,12 +1,13 @@
-package logica;
+package test;
  
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
-public class Assert
-{
+import logica.GrafoConPesos;
+
+public class Assert {
 	// Verifica que sean iguales como conjuntos
 	public static void iguales(int[] esperado, Set<Integer> obtenido) {
 		
@@ -33,11 +34,5 @@ public class Assert
 				assertTrue(g.existeArista(i, j));
 			}
 		}		
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }

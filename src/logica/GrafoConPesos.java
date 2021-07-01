@@ -1,10 +1,8 @@
 package logica;
 
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
 
 public class GrafoConPesos {
 
@@ -18,7 +16,6 @@ public class GrafoConPesos {
 	}
 
 	public void agregarAristaConPeso(int i, int j,int peso) {
-		
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
@@ -42,7 +39,6 @@ public class GrafoConPesos {
 	}
 
 	public void eliminarArista(int i, int j) {
-		
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
@@ -59,8 +55,7 @@ public class GrafoConPesos {
 		return A[i][j]!=null;
 	}
 
-	public int tamano()
-	{
+	public int tamano() {
 		return A.length;
 	}
 
@@ -76,7 +71,6 @@ public class GrafoConPesos {
 
 		return ret;		
 	}
-
 
 	public void eliminarAristaMayorPeso() {
 		int maximo=-1;
@@ -107,7 +101,6 @@ public class GrafoConPesos {
 		return grafo;
 	}
 	
-
 	// Verifica que sea un vertice valido
 	private void verificarVertice(int i) {
 		if( i < 0 )
@@ -118,25 +111,10 @@ public class GrafoConPesos {
 	}
 
 	// Verifica que i y j sean distintos
-	private void verificarDistintos(int i, int j)
-	{
+	private void verificarDistintos(int i, int j) {
 		if( i == j )
 			throw new IllegalArgumentException("No se permiten loops: (" + i + ", " + j + ")");
 	}
-
-//	public void imprimiGrafo() {
-//		for(int f=0;f<A.length;++f){
-//			for (int c = 0; c <A[0].length; c++){
-//				if(A[f][c]==null)
-//					System.out.print("-");
-//				else 
-//					System.out.print(A[f][c]);
-//				System.out.print("|");
-//			}
-//			System.out.println();
-//		}
-//	}
-
 }
 
 

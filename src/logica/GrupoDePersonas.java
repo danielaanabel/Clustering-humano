@@ -8,7 +8,6 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
 public class GrupoDePersonas {
 	private ArrayList<Persona> personas;
 	
@@ -45,7 +44,6 @@ public class GrupoDePersonas {
 		return personas;
 	}
 
-	
 	//metodos JSON
 	public String generarJSONPretty(){
 		Gson gson=new GsonBuilder().setPrettyPrinting().create();
@@ -79,5 +77,4 @@ public class GrupoDePersonas {
 		}
 		return ret;
 	}
-
 }

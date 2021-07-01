@@ -20,7 +20,7 @@ public class AGM {
 		int i=0;
 		while(i<g.tamano()-1){
 			int minimo=0xff;
-			for(int v=0;v<marcados.size();v++){
+			for(int v=0;v<marcados.size();v++) {
 				for(int n=0;n<verticesG.length;n++) if(verticesG[n]==false){
 					if(g.obtenerPesoArista(marcados.get(v), n) < minimo){
 						minimo=g.obtenerPesoArista(marcados.get(v),n);
@@ -40,9 +40,6 @@ public class AGM {
 
 	private static void verificarGrafoNoVacio(GrafoConPesos g) {
 		if(g.tamano()==0)
-			throw new RuntimeException("No se puede generar un AGM de un grafo vacio");
-		
+			throw new RuntimeException("No se puede generar un AGM de un grafo vacio");	
 	}
-
-
 }

@@ -1,43 +1,39 @@
-package logica;
-
+package test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import logica.GrafoConPesos;
+
 public class EdicionDeAristasTest { 
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void primerVerticeNegativoTest()
-	{
+	public void primerVerticeNegativoTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(-1, 3, 5);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void primerVerticeExcedidoTest()
-	{
+	public void primerVerticeExcedidoTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(5, 2, 5);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void segundoVerticeNegativoTest()
-	{
+	public void segundoVerticeNegativoTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, -1, 5);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void segundoVerticeExcedidoTest()
-	{
+	public void segundoVerticeExcedidoTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 5, 5);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void agregarLoopTest()
-	{
+	public void agregarLoopTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 2, 5);
 	}
@@ -57,24 +53,21 @@ public class EdicionDeAristasTest {
 	}
 
 	@Test
-	public void aristaOpuestaTest()
-	{
+	public void aristaOpuestaTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 3, 5);
 		assertTrue( grafo.existeArista(3, 2) );
 	}
 
 	@Test
-	public void aristaInexistenteTest()
-	{
+	public void aristaInexistenteTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 3, 5);
 		assertFalse( grafo.existeArista(1, 4) );
 	}
 
 	@Test
-	public void agregarAristaDosVecesTest()
-	{
+	public void agregarAristaDosVecesTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 3, 5);
 		grafo.agregarAristaConPeso(2, 3, 5);
@@ -83,8 +76,7 @@ public class EdicionDeAristasTest {
 	}
 	
 	@Test
-	public void eliminarAristaExistenteTest()
-	{
+	public void eliminarAristaExistenteTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 4, 5);
 		
@@ -93,23 +85,20 @@ public class EdicionDeAristasTest {
 	}
 
 	@Test
-	public void eliminarAristaInexistenteTest()
-	{
+	public void eliminarAristaInexistenteTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.eliminarArista(2, 4);
 		assertFalse( grafo.existeArista(2, 4) );
 	}
 	
 	@Test
-	public void eliminarAristaDosVecesTest()
-	{
+	public void eliminarAristaDosVecesTest() {
 		GrafoConPesos grafo = new GrafoConPesos(5);
 		grafo.agregarAristaConPeso(2, 4, 5);
 		
 		grafo.eliminarArista(2, 4);
 		grafo.eliminarArista(2, 4);
 		assertFalse( grafo.existeArista(2, 4) );
-	}
-	
+	}	
 }
 

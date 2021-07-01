@@ -1,4 +1,4 @@
-package logica;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,9 @@ import java.util.HashSet;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import logica.Ejecutar;
+import logica.GrupoDePersonas;
 
 public class EjecutarTest {
 	HashSet<String> grupo1;

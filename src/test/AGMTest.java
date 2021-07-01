@@ -1,8 +1,10 @@
-package logica;
-
+package test;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import logica.AGM;
+import logica.GrafoConPesos;
 
 public class AGMTest {
 	GrafoConPesos grafo;
@@ -40,6 +42,4 @@ public class AGMTest {
 	
 		Assert.grafoIgual(AGM.algoritmoPrim(obtenido), esperado);	
 	}
-	
-
 }

@@ -1,4 +1,4 @@
-package logica;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-  
+import logica.GrafoConPesos;
+import logica.Persona;
+
 public class GrafoConPesosTest {
 	
 	@Test
@@ -82,5 +84,4 @@ public class GrafoConPesosTest {
 		int[] esperados = {1, 2};
 		Assert.iguales(esperados, grafo.vecinos(3));
 	}
-
 }

@@ -1,4 +1,4 @@
-package logica;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import logica.GrafoConPesos;
+import logica.Persona;
 
 public class SimilaridadTest {
 	private ArrayList<Persona> listaPersonas;

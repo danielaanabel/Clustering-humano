@@ -1,8 +1,9 @@
-package logica;
-
+package test;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import logica.GrupoDePersonas;
 
 public class PersonaTest {
 	GrupoDePersonas personas;
@@ -20,13 +21,11 @@ public class PersonaTest {
 	@Test (expected = IllegalArgumentException.class)
 	public void interesDeportesFueraDeRangoTest() {
 		personas.agregarPersona("Daniel", 6, 2, 3, 3);
-		
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void interesMusicaFueraDeRangoTest() {
 		personas.agregarPersona("Daniel", 1, -1, 3, 3);
-		
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
@@ -39,5 +38,4 @@ public class PersonaTest {
 	public void interesCienciaFueraDeRangoTest() {
 		personas.agregarPersona("Daniel", 1, 2, 3, 0);
 	}
-
 }
