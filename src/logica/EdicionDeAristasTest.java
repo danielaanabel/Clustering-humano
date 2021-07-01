@@ -1,4 +1,4 @@
-package TP2;
+package logica;
 
 
 import static org.junit.Assert.*;

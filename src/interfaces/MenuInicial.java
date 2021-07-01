@@ -14,8 +14,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import TP2.Ejecutar;
-import TP2.GrupoDePersonas;
+import logica.Ejecutar;
+import logica.GrupoDePersonas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

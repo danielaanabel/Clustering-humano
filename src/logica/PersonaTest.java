@@ -1,4 +1,4 @@
-package TP2;
+package logica;
 
 
 import org.junit.Before;

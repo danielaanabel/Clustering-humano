@@ -1,4 +1,4 @@
-package TP2;
+package logica;
 import java.util.ArrayList;
 import java.util.HashSet;
 
